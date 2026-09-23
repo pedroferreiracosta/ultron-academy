@@ -1,5 +1,4 @@
 import { MotionConfig } from 'framer-motion'
-import IntroOverlay from './components/IntroOverlay'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import AssetTicker from './components/AssetTicker'
@@ -20,7 +19,6 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="min-h-screen">
-        <IntroOverlay />
         <ScrollBackdrop />
         <ScrollProgress />
         <Header />
