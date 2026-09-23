@@ -50,7 +50,6 @@ Marcados com `// TODO` em `src/content/site.ts` e nos componentes:
 - [ ] **Link de WhatsApp** (não encontrado em `/links/`)
 - [ ] **Redes sociais** Instagram / YouTube / TikTok (não encontradas em `/links/`)
 - [ ] **KPIs reais**: nº de alunos, nº de aulas, horas de conteúdo, tempo de operação
-- [ ] **Placas de faturamento**: confirmar se R$100mil / R$500mil / R$1mi são os valores reais a exibir
 - [ ] **Condições de garantia** (seção Garantia + FAQ)
 - [ ] **OG image** (`/og-cover.png` referenciada no `index.html` — arquivo ainda não existe em `public/`)
 - [ ] **Bio e cargo reais dos instrutores** (página `/experts.html` — hoje com texto genérico, ver `instructors` em `site.ts`)

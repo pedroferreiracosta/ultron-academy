@@ -2,21 +2,19 @@ import { MotionConfig } from 'framer-motion'
 import IntroOverlay from './components/IntroOverlay'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import KpiBar from './components/KpiBar'
-import PainPromise from './components/PainPromise'
-import Tracks from './components/Tracks'
-import OrbitMethod from './components/OrbitMethod'
-import VipRoom from './components/VipRoom'
+import AssetTicker from './components/AssetTicker'
+import PlatformSection from './components/PlatformSection'
+import Steps from './components/Steps'
+import Structure from './components/Structure'
+import Stats from './components/Stats'
 import ResultsProof from './components/ResultsProof'
-import MethodAbout from './components/MethodAbout'
-import Pricing from './components/Pricing'
-import Guarantee from './components/Guarantee'
-import Faq from './components/Faq'
+import Trust from './components/Trust'
+import Testimonials from './components/Testimonials'
 import FinalCta from './components/FinalCta'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
 import ScrollBackdrop from './components/ui/ScrollBackdrop'
 import ScrollProgress from './components/ui/ScrollProgress'
-import SectionDivider from './components/ui/SectionDivider'
 
 export default function App() {
   return (
@@ -28,19 +26,16 @@ export default function App() {
         <Header />
         <main>
           <Hero />
-          <KpiBar />
-          <PainPromise />
-          <Tracks />
-          <OrbitMethod />
-          <VipRoom />
+          <AssetTicker />
+          <PlatformSection />
+          <Steps />
+          <Structure />
+          <Stats />
           <ResultsProof />
-          <MethodAbout />
-          <SectionDivider />
-          <Pricing />
-          <Guarantee />
-          <Faq />
-          <SectionDivider />
+          <Trust />
+          <Testimonials />
           <FinalCta />
+          <Faq />
         </main>
         <Footer />
       </div>
