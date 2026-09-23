@@ -27,7 +27,7 @@ export default function Hero() {
           </span>
 
           <h1 className="mt-6 text-[clamp(2.25rem,5.2vw,3.5rem)] font-heading font-extrabold leading-[1.1] text-branco">
-            O mercado é o mesmo. <ShinyText className="font-extrabold">O método muda tudo.</ShinyText>
+            Aprenda a operar <ShinyText className="font-extrabold">com método e acompanhamento.</ShinyText>
           </h1>
 
           <p className="mx-auto mt-6 max-w-[560px] text-base text-aco sm:text-lg lg:mx-0">

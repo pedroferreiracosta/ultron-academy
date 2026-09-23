@@ -22,7 +22,7 @@ números da barra de KPI ou perguntas do FAQ.
 
 Os assets de marca ficam em `src/assets/`:
 - `logo-ultron.png` — símbolo + wordmark sobre fundo preto (versão principal do manual).
-- `speakers/speaker-felipe.webp` e `speakers/speaker-adriana.webp` — fotos dos instrutores, recortadas (fundo transparente) e comprimidas, usadas no Hero com máscara radial + grayscale.
+- `speakers/expert-mateus.webp` e `speakers/expert-adriana.webp`: fotos dos instrutores em palestra, convertidas dos RAW (DSC00552 e DSC00470), recortadas em 4:5 e usadas na página de Experts.
 
 As cores e fontes da marca estão definidas como tokens Tailwind em
 `src/index.css` (bloco `@theme`): `navy`, `preto`, `azul`, `ciano`,

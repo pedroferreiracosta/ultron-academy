@@ -7,11 +7,11 @@ import Button from '../components/ui/Button'
 import ScrollBackdrop from '../components/ui/ScrollBackdrop'
 import ScrollProgress from '../components/ui/ScrollProgress'
 import { instructors, links } from '../content/site'
-import felipe from '../assets/speakers/speaker-felipe.webp'
-import adriana from '../assets/speakers/speaker-adriana.webp'
+import mateus from '../assets/speakers/expert-mateus.webp'
+import adriana from '../assets/speakers/expert-adriana.webp'
 
 const experts = [
-  { ...instructors.mateus, photo: felipe },
+  { ...instructors.mateus, photo: mateus },
   { ...instructors.adriana, photo: adriana },
 ]
 
@@ -25,14 +25,29 @@ export default function ExpertsPage() {
 
         <main>
           <section className="relative overflow-hidden pt-36 pb-16 sm:pt-40">
+            {/* Grade técnica ao fundo, esmaecendo nas bordas */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.07]"
+              style={{
+                backgroundImage:
+                  'linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)',
+                backgroundSize: '48px 48px',
+                maskImage: 'radial-gradient(ellipse at 50% 0%, black 30%, transparent 75%)',
+                WebkitMaskImage: 'radial-gradient(ellipse at 50% 0%, black 30%, transparent 75%)',
+              }}
+              aria-hidden="true"
+            />
             <div
               className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 -translate-y-1/3 rounded-full blur-[130px]"
               style={{ background: 'radial-gradient(circle, rgba(10,47,119,0.5) 0%, rgba(30,107,255,0.22) 45%, transparent 75%)' }}
               aria-hidden="true"
             />
             <Reveal className="relative mx-auto max-w-2xl px-4 text-center sm:px-6">
-              <span className="text-xs font-medium uppercase tracking-wider text-ciano">Experts</span>
-              <h1 className="mt-3 text-[clamp(2rem,5vw,3rem)] font-heading font-extrabold leading-tight text-branco">
+              <span className="inline-flex items-center gap-2 rounded-full border border-ciano/30 bg-ciano/5 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-ciano">
+                <span className="h-1.5 w-1.5 rounded-full bg-ciano" aria-hidden="true" />
+                Experts Ultron
+              </span>
+              <h1 className="mt-5 text-[clamp(2rem,5vw,3rem)] font-heading font-extrabold leading-tight text-branco">
                 Quem está por trás do método
               </h1>
               <p className="mt-6 text-base text-aco sm:text-lg">
@@ -43,9 +58,9 @@ export default function ExpertsPage() {
           </section>
 
           <section className="relative py-10 sm:py-16">
-            <div className="mx-auto flex max-w-4xl flex-col gap-10 px-4 sm:px-6">
+            <div className="mx-auto flex max-w-6xl flex-col gap-24 px-4 sm:gap-32 sm:px-6">
               {experts.map((expert, i) => (
-                <ExpertProfile key={expert.name} expert={expert} reverse={i % 2 === 1} />
+                <ExpertProfile key={expert.name} expert={expert} index={i} reverse={i % 2 === 1} />
               ))}
             </div>
           </section>
