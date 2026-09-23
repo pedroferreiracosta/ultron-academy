@@ -18,14 +18,7 @@ export const links = {
   broker: 'https://r.ryvon.io/l/1070/913',
   // Link real extraído de https://ultronacademy.online/links/ (Telegram — Comunidade e sinais diários)
   telegram: 'https://t.me/+c1bmO-4z90M0MjMx',
-  // TODO: nenhum link de WhatsApp foi encontrado em /links/ — substituir quando disponível
-  whatsapp: '#',
-  // TODO: checkout dedicado da Sala VIP — hoje reaproveita o link da corretora
-  vip: 'https://r.ryvon.io/l/1070/913',
-  // TODO: redes sociais não localizadas em /links/
-  instagram: '#',
-  youtube: '#',
-  tiktok: '#',
+  tiktok: 'https://www.tiktok.com/@ultronacademy',
   terms: '#',
   privacy: '#',
 }

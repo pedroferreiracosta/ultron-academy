@@ -47,8 +47,6 @@ Marcados com `// TODO` em `src/content/site.ts` e nos componentes:
 
 - [ ] **Preços** dos planos Aluno e VIP (hoje: "Sob consulta")
 - [ ] **Link de checkout dedicado da Sala VIP** (hoje reaproveita o link de corretora)
-- [ ] **Link de WhatsApp** (não encontrado em `/links/`)
-- [ ] **Redes sociais** Instagram / YouTube / TikTok (não encontradas em `/links/`)
 - [ ] **KPIs reais**: nº de alunos, nº de aulas, horas de conteúdo, tempo de operação
 - [ ] **Condições de garantia** (seção Garantia + FAQ)
 - [ ] **OG image** (`/og-cover.png` referenciada no `index.html` — arquivo ainda não existe em `public/`)
