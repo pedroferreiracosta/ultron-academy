@@ -13,9 +13,9 @@ export default function Trust() {
   return (
     <section id="transparencia" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading eyebrow="Transparência" title="Confiança se constrói com a tela aberta">
-          A Ultron não guarda o seu dinheiro e não opera por você. O que entregamos é método,
-          acompanhamento e registro de tudo o que acontece na comunidade.
+        <SectionHeading eyebrow="Transparência" title="Operações feitas com a tela aberta">
+          A Ultron não guarda o seu dinheiro e não opera por você. Entregamos método,
+          acompanhamento e o registro das operações feitas na comunidade.
         </SectionHeading>
 
         <div className="mt-14 grid gap-5 lg:grid-cols-[1.3fr_1fr]">

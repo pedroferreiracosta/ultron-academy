@@ -11,8 +11,8 @@ export default function Structure() {
     <section id="estrutura" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading eyebrow="Estrutura" title="Tudo o que acontece por trás de cada aula">
-          A Ultron funciona como uma mesa: gente operando, gente ensinando e gente dando suporte —
-          ao mesmo tempo, no mesmo lugar.
+          A Ultron funciona como uma mesa de operações, com traders operando, instrutores ensinando
+          e um time de suporte, tudo no mesmo lugar.
         </SectionHeading>
 
         <div className="mt-14 grid items-center gap-8 lg:grid-cols-[1.15fr_1fr]">

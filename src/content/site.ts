@@ -33,7 +33,7 @@ export const instructors = {
     name: 'Mateus Menezes',
     role: 'Análise técnica e gestão de risco', // TODO: cargo/especialidade real a confirmar com o cliente
     tags: ['Análise', 'Estratégia', 'Disciplina', 'Resultados'],
-    bio: 'Ensina o método aplicado todos os dias dentro da comunidade, da leitura de gráfico à gestão de risco.', // TODO: bio real
+    bio: 'Ensina na comunidade a leitura de gráfico e a gestão de risco que usa nas próprias operações.', // TODO: bio real
   },
   adriana: {
     name: 'Adriana Costa',
@@ -62,7 +62,7 @@ export const platformFeatures = [
   {
     title: 'Leitura gráfica aplicada',
     description:
-      'Você aprende a ler o gráfico na mesma tela em que vai operar: padrões, zonas e gatilhos explicados em cima de operações reais, não em slides.',
+      'Você aprende a ler o gráfico na mesma tela em que vai operar. Padrões, zonas e gatilhos são explicados em cima de operações reais.',
   },
   {
     title: 'Evolução acompanhada',
@@ -84,7 +84,7 @@ export const steps = [
   },
   {
     title: 'Aprenda o método',
-    description: 'Siga as trilhas na ordem — Fundamentos, Análise, Fluxo, Risco — com o time acompanhando cada etapa.',
+    description: 'Siga as trilhas de Fundamentos, Análise, Fluxo e Risco, nessa ordem, com o time acompanhando cada etapa.',
   },
   {
     title: 'Opere com consistência',
@@ -103,7 +103,7 @@ export const structure = [
   },
   {
     title: 'Playbook Ultron',
-    description: 'Setups documentados com critério de entrada, saída e stop. Replicável e mensurável.',
+    description: 'Setups documentados com critério de entrada, saída e stop, para você repetir e medir cada operação.',
   },
 ]
 
@@ -119,7 +119,7 @@ export const kpis = [
 export const trustDetails = [
   {
     title: 'Gestão de risco antes do lucro',
-    description: 'Todo setup do playbook nasce com stop e tamanho de posição definidos. Proteger capital é a primeira aula, não a última.',
+    description: 'Todo setup do playbook já vem com stop e tamanho de posição definidos. Proteger o capital é a primeira coisa que você aprende.',
   },
   {
     title: 'Operações mostradas ao vivo',
@@ -135,7 +135,7 @@ export const trustDetails = [
   },
   {
     title: 'Sem promessa de resultado',
-    description: 'Mercado envolve risco real. Mostramos método e disciplina — nunca garantia de ganho.',
+    description: 'Operar envolve risco real. Ensinamos disciplina e gestão, sem garantia de ganho.',
   },
 ]
 
@@ -170,7 +170,7 @@ export const faq = [
   },
   {
     q: 'O que diferencia a Ultron de um curso comum?',
-    a: 'Acompanhamento contínuo. Além das trilhas gravadas, há lives de operação, revisões e um time presente na comunidade todos os dias.',
+    a: 'O acompanhamento. Além das trilhas gravadas, você tem lives de operação, revisões e um time presente na comunidade todos os dias.',
   },
   {
     q: 'Preciso ter experiência para começar?',

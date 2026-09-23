@@ -8,7 +8,7 @@ export default function Steps() {
   return (
     <section id="como-funciona" className="relative py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading eyebrow="Como funciona" title="Três passos até a sua primeira operação com método" />
+        <SectionHeading eyebrow="Como funciona" title="Três passos até a sua primeira operação" />
 
         <ol className="relative mt-14 grid gap-5 md:grid-cols-3">
           <div

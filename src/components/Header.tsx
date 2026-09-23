@@ -36,7 +36,7 @@ export default function Header({ page = 'home' }: { page?: 'home' | 'experts' })
         <div className="flex items-center justify-between gap-4 px-4 py-2.5 sm:px-5">
           <a
             href={page === 'home' ? '#hero' : '/'}
-            aria-label="Ultron Academy — início"
+            aria-label="Ultron Academy, início"
             className="flex shrink-0 items-center rounded-md"
           >
             <img

@@ -36,8 +36,8 @@ export default function ExpertsPage() {
                 Quem está por trás do método
               </h1>
               <p className="mt-6 text-base text-aco sm:text-lg">
-                Duas pessoas que operam o mercado todos os dias e ensinam exatamente o que
-                aplicam, dentro da comunidade da Ultron Academy.
+                Os dois operam no mercado e ensinam, na comunidade da Ultron Academy, as mesmas
+                estratégias que usam nas próprias operações.
               </p>
             </Reveal>
           </section>
@@ -53,7 +53,7 @@ export default function ExpertsPage() {
           <section className="relative overflow-hidden py-20 sm:py-28">
             <Reveal className="mx-auto flex max-w-2xl flex-col items-center gap-6 px-4 text-center sm:px-6">
               <h2 className="text-2xl font-bold sm:text-3xl">
-                Pronto para aprender com quem aplica o método todos os dias?
+                Pronto para aprender com eles?
               </h2>
               <Button href={links.broker} target="_blank" rel="noopener noreferrer" size="lg">
                 Abrir minha conta

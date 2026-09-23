@@ -13,7 +13,7 @@ export default function PlatformSection() {
       <section id="plataforma" className="relative py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading eyebrow="Método Ultron" title="Onde trader sério aprende a operar">
-            Nada de teoria solta. Cada aula acontece em cima do gráfico, com o mesmo raciocínio que
+            Cada aula acontece em cima do gráfico, com o mesmo raciocínio que
             você vai usar na sua conta.
           </SectionHeading>
 
@@ -74,9 +74,9 @@ export default function PlatformSection() {
 
       <section className="relative py-16 sm:py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_1.2fr]">
-          <SectionHeading align="left" eyebrow="Acesso" title="Rápido para entrar, sério para ficar">
-            Você não espera turma nem liberação manual. Abriu a conta, o caminho inteiro já está
-            disponível.
+          <SectionHeading align="left" eyebrow="Acesso" title="Comece assim que abrir a conta">
+            Sem turma para esperar e sem liberação manual. Todas as trilhas ficam disponíveis logo
+            após o cadastro.
           </SectionHeading>
 
           <div className="grid gap-4 sm:grid-cols-3">

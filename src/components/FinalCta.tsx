@@ -21,7 +21,7 @@ export default function FinalCta() {
             <div className="relative">
               <img src={logoIcon} alt="" className="mx-auto h-12 w-auto" />
               <h2 className="mx-auto mt-6 max-w-2xl text-[clamp(1.9rem,4.4vw,3rem)] font-extrabold leading-tight">
-                Consistência constrói autoridade. Comece a sua hoje.
+                Comece hoje a construir a sua consistência.
               </h2>
 
               <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3">
