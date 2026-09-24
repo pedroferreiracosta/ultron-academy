@@ -1,25 +1,41 @@
+import { ArrowRight } from 'lucide-react'
+import Button from './ui/Button'
+import Counter from './ui/Counter'
 import Todo from './ui/Todo'
-import { kpis } from '../content/site'
+import { cta, links, stats } from '../content/site'
 
-// Só o que é dado real aparece em produção. Sem contagem animada.
+// Continuação do bloco claro. Só número real aparece em produção.
 export default function Stats() {
-  const items = kpis.filter((k) => k.value || import.meta.env.DEV)
+  const items = stats.items.filter((s) => s.value !== null || import.meta.env.DEV)
 
   return (
-    <section aria-label="Números da Ultron" className="border-t bg-grafite/60">
-      <dl className="frame grid grid-cols-2 lg:grid-cols-4">
-        {items.map((k, i) => (
-          <div
-            key={k.label}
-            className={`border-b px-4 py-6 sm:px-8 lg:border-b-0 ${i % 2 === 0 ? 'border-r' : ''} lg:border-r lg:last:border-r-0 ${items.length === 1 ? 'col-span-2 lg:col-span-4' : ''}`}
-          >
-            <dt className="label">{k.label}</dt>
-            <dd className="num mt-2 text-[clamp(2rem,4vw,3rem)] font-medium leading-none text-branco">
-              {k.value ?? <Todo>{k.todo}</Todo>}
-            </dd>
-          </div>
-        ))}
-      </dl>
+    <section aria-labelledby="numeros" className="noise bg-branco pb-24 pt-28 text-preto sm:pb-28 sm:pt-36">
+      <div className="container-x text-center">
+        <h2 id="numeros" className="h-section text-preto" data-reveal>
+          {stats.title}
+        </h2>
+
+        <div
+          className={`mx-auto mt-14 grid gap-y-10 ${items.length > 1 ? 'grid-cols-2 lg:grid-cols-4' : 'max-w-md grid-cols-1'}`}
+          data-reveal
+        >
+          {items.map((s, i) => (
+            <div key={s.label} className={`px-4 ${i > 0 ? 'lg:border-l lg:border-preto/20' : ''}`}>
+              <p className="font-mono text-[clamp(2.8rem,5vw,4rem)] font-medium leading-none tracking-tight [font-variant-numeric:tabular-nums]">
+                {s.value !== null ? <Counter value={s.value} suffix={s.suffix} /> : <Todo>{s.todo}</Todo>}
+              </p>
+              <p className="mt-4 text-lg text-preto/70">{s.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14" data-reveal>
+          <Button href={links.telegram} target="_blank" rel="noopener noreferrer">
+            {cta.telegram}
+            <ArrowRight size={20} aria-hidden="true" />
+          </Button>
+        </div>
+      </div>
     </section>
   )
 }

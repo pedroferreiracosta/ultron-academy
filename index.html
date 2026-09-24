@@ -31,12 +31,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap"
       rel="stylesheet"
     />
+    <!-- Liga a animação de entrada antes da renderização (sem JS, nada fica escondido) -->
+    <script>document.documentElement.classList.add('js-reveal')</script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <div style="max-width:720px;margin:0 auto;padding:48px 20px;font-family:Inter,system-ui,sans-serif;color:#fff;background:#0b0d12;line-height:1.6">
+        <h1 style="font-family:Montserrat,system-ui,sans-serif">Ultron Academy</h1>
+        <p>Educação em trading. Aulas gravadas com o gráfico aberto, Sala VIP ao vivo e grupo gratuito no Telegram.</p>
+        <p><strong>16.000+</strong> alunos cadastrados.</p>
+        <p><a style="color:#00d4ff" href="https://t.me/+c1bmO-4z90M0MjMx">Entrar no grupo gratuito do Telegram</a></p>
+        <p style="font-size:14px;color:#e5e7eb">A Ultron Academy é uma empresa de educação. Não somos corretora, não recebemos depósitos, não acessamos a conta de alunos e não fazemos gestão de recursos. O conteúdo é educacional e não constitui recomendação de investimento. Operações no mercado financeiro envolvem alto risco e podem resultar na perda total do capital. Resultados passados não garantem resultados futuros.</p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

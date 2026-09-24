@@ -10,13 +10,13 @@
 type Maybe<T> = T | null
 
 export const links = {
-  // Link real extraído de https://ultronacademy.online/links/. É só um atalho
-  // para a página de cadastro da corretora: não é link de afiliado, não
-  // identifica o aluno e a Ultron não recebe nada por ele.
-  broker: 'https://r.ryvon.io/l/1070/913',
   // Link real extraído de https://ultronacademy.online/links/. Grupo GRATUITO:
   // é a porta de entrada da Ultron. Não exige pagamento nem conta em corretora.
   telegram: 'https://t.me/+c1bmO-4z90M0MjMx',
+  // Link real extraído de https://ultronacademy.online/links/. É só um atalho
+  // para a página de cadastro da corretora: não é link de afiliado, não
+  // identifica o aluno e a Ultron não recebe nada por ele. Abrir conta é opcional.
+  broker: 'https://r.ryvon.io/l/1070/913',
   tiktok: 'https://www.tiktok.com/@ultronacademy',
   terms: null as Maybe<string>, // TODO: URL dos termos de uso
   privacy: null as Maybe<string>, // TODO: URL da política de privacidade
@@ -31,8 +31,14 @@ export const facts = {
   // TODO: como o aluno ganha acesso às aulas (ex.: "Entrando no grupo do Telegram")
   accessHow: null as Maybe<string>,
   signals: null as Maybe<string>, // TODO: o grupo do Telegram passa sinais? Resposta para o FAQ
-  liveSchedule: null as Maybe<string>, // TODO: dias e horário das sessões da Sala VIP (ex.: "Seg a sex, 10h")
   cnpj: null as Maybe<string>, // TODO: CNPJ no formato 00.000.000/0000-00
+}
+
+// A Sala VIP existe, mas ainda não tem link no site. Nada de botão próprio,
+// e nada de dizer se é gratuita ou paga. Nunca listar junto do que é gratuito.
+export const vipRoom = {
+  link: null as Maybe<string>, // TODO: link da Sala VIP
+  conditions: null as Maybe<string>, // TODO: condições de acesso à Sala VIP
 }
 
 const broker = facts.brokerName ?? 'corretora'
@@ -41,145 +47,155 @@ const broker = facts.brokerName ?? 'corretora'
 // 1. Telegram: grupo gratuito, porta de entrada. É o CTA principal.
 // 2. Corretora: só o cadastro na corretora onde operamos e gravamos as aulas.
 //    Opcional. Nunca sugerir que dá acesso à Ultron, libera aula ou é obrigatório.
-export const telegramCta = 'Entrar no grupo gratuito do Telegram'
-export const telegramCtaShort = 'Grupo gratuito'
-export const brokerCta = facts.brokerName ? `Criar conta na ${facts.brokerName}` : 'Criar conta na corretora que usamos'
-export const ctaNote = `O grupo do Telegram é gratuito e não exige conta em corretora. Criar conta na ${broker} é opcional: é onde a gente opera e grava as aulas. A Ultron não tem vínculo com ela e não recebe nada pelo seu cadastro.`
+export const cta = {
+  telegram: 'Entrar no grupo gratuito',
+  telegramLong: 'Entrar no grupo gratuito do Telegram',
+  telegramShort: 'Grupo gratuito',
+  broker: facts.brokerName ? `Criar conta na ${facts.brokerName}` : 'Criar conta na corretora que usamos',
+  brokerShort: 'Corretora que usamos',
+  note: 'O grupo do Telegram é gratuito. Conta na corretora é opcional.',
+}
 
-export const riskLine =
-  'Operar no mercado financeiro envolve alto risco e pode levar à perda total do capital. Conteúdo educacional, não é recomendação de investimento.'
+export const nav = [
+  { label: 'Vantagens', hash: '#vantagens' },
+  { label: 'Como começar', hash: '#como-comecar' },
+  { label: 'Experts', hash: '#experts' },
+  { label: 'Seu dinheiro', hash: '#seu-dinheiro' },
+  { label: 'FAQ', hash: '#faq' },
+]
 
 export const hero = {
-  label: 'Ultron Academy / Educação em trading',
-  title: 'Aulas gravadas na plataforma em que a gente opera.',
-  titleSecond: 'Você aprende na tela em que vai operar.',
-  body:
-    'Aulas gravadas com o gráfico aberto, sessões ao vivo na Sala VIP e um grupo no Telegram onde o time responde. O dinheiro fica na sua conta: a Ultron não recebe depósito e não opera por você.',
+  badge: 'Educação em trading · Grupo gratuito no Telegram',
+  title: 'Aprenda trading na tela em que a gente opera.',
+  body: 'Aulas gravadas com o gráfico aberto, Sala VIP ao vivo e um grupo gratuito no Telegram, onde o time responde.',
+  mockupLabel: 'Imagem ilustrativa',
 }
 
-// Ficha técnica do Hero. `value: null` = oculto em produção.
-export const heroSpecs: { k: string; value: Maybe<string>; mono?: boolean; todo?: string }[] = [
-  // Dado real informado pelo cliente. TODO: confirmar o rótulo exato
-  // ("alunos cadastrados" ou "membros da comunidade").
-  { k: 'Alunos', value: '16.000+', mono: true },
-  { k: 'Conteúdo', value: 'Trilhas gravadas, de Fundamentos a Psicologia' },
-  { k: 'Ao vivo', value: facts.liveSchedule ? `Sala VIP · ${facts.liveSchedule}` : 'Sala VIP', todo: facts.liveSchedule ? undefined : 'horário da Sala VIP' },
-  { k: 'Comunidade', value: 'Grupo no Telegram, gratuito' },
-  {
-    k: 'Corretora',
-    value: facts.brokerName ? `${facts.brokerName}, a que usamos nas aulas. Opcional, sem vínculo com a Ultron` : 'A que usamos nas aulas. Opcional, sem vínculo com a Ultron',
-    todo: facts.brokerName ? undefined : 'nome da corretora',
-  },
-  { k: 'Acesso', value: facts.accessHow, todo: 'como o aluno ganha acesso às aulas' },
-  { k: 'Custo', value: facts.access, todo: 'custo das aulas e da Sala VIP' },
-  { k: 'Depósito mín.', value: facts.minDeposit, mono: true, todo: 'depósito mínimo' },
-  { k: 'Risco', value: 'Alto. Pode haver perda total do capital.' },
-]
-
-// Mercados que aparecem nas aulas (faixa estática abaixo do Hero).
-// Sem cotação: a Ultron não é fonte de preço.
+// Ativos que aparecem nas aulas (ticker abaixo do Hero). Sem cotação.
 // TODO: confirmar com o cliente que todos esses mercados são ensinados.
-export const assets = [
-  { symbol: 'BTC', name: 'Bitcoin' },
-  { symbol: 'ETH', name: 'Ethereum' },
-  { symbol: 'SOL', name: 'Solana' },
-  { symbol: 'XRP', name: 'Ripple' },
-  { symbol: 'EUR/USD', name: 'Euro / Dólar' },
-  { symbol: 'GBP/USD', name: 'Libra / Dólar' },
-  { symbol: 'USD/JPY', name: 'Dólar / Iene' },
-  { symbol: 'XAU', name: 'Ouro' },
-  { symbol: 'US100', name: 'Nasdaq 100' },
+export const assets: { name: string; symbol: string; icons: string[] }[] = [
+  { name: 'Bitcoin', symbol: 'BTC', icons: ['btc'] },
+  { name: 'EUR/USD', symbol: 'Euro / Dólar', icons: ['flag-eu', 'flag-us'] },
+  { name: 'Ethereum', symbol: 'ETH', icons: ['eth'] },
+  { name: 'GBP/USD', symbol: 'Libra / Dólar', icons: ['flag-gb', 'flag-us'] },
+  { name: 'Ouro', symbol: 'XAU/USD', icons: ['xau'] },
+  { name: 'Solana', symbol: 'SOL', icons: ['sol'] },
+  { name: 'USD/JPY', symbol: 'Dólar / Iene', icons: ['flag-us', 'flag-jp'] },
+  { name: 'XRP', symbol: 'XRP', icons: ['xrp'] },
 ]
 
-export const method = {
-  title: 'O conteúdo, trilha por trilha',
-  body:
-    'As aulas são gravadas com o gráfico aberto. A marcação da zona, o critério de entrada e o lugar do stop aparecem antes do resultado, e não depois.',
-  note: 'A ordem importa: setup só entra depois que a base e o gerenciamento estão firmes.',
-}
+// TODO: validar a ementa com o cliente (só estas 5 trilhas estão confirmadas).
+export const tracks = ['Fundamentos', 'Análise técnica', 'Leitura de fluxo', 'Gestão de risco', 'Psicologia']
 
-// TODO: validar a ementa com o cliente. O README fala em 7 trilhas; só
-// estas 5 estão confirmadas no material atual. Aulas e duração em branco.
-export const tracks: { code: string; name: string; content: string; lessons: Maybe<number>; hours: Maybe<string> }[] = [
-  { code: 'T01', name: 'Fundamentos', content: 'Como a plataforma funciona, leitura de candle e timeframe.', lessons: null, hours: null },
-  { code: 'T02', name: 'Análise técnica', content: 'Zonas, padrões e gatilhos de entrada, marcados em cima de operações reais.', lessons: null, hours: null },
-  { code: 'T03', name: 'Leitura de fluxo', content: 'Leitura do movimento enquanto ele acontece, aplicada nas sessões ao vivo.', lessons: null, hours: null },
-  { code: 'T04', name: 'Gestão de risco', content: 'Stop e tamanho de posição definidos antes da entrada. Proteger o capital vem primeiro.', lessons: null, hours: null },
-  { code: 'T05', name: 'Psicologia', content: 'Seguir o plano depois de uma sequência de perdas, e parar quando o dia não é seu.', lessons: null, hours: null },
-]
-
-export const steps = {
-  title: 'Por onde começar',
+export const advantages = {
+  badge: 'Vantagens',
+  title: 'O que você encontra na Ultron',
+  trackTitle: 'Do básico à psicologia',
+  trackBody: 'As trilhas seguem uma ordem. Setup só entra depois que a base e o gerenciamento estão firmes.',
   items: [
     {
-      title: 'Entre no grupo gratuito do Telegram',
-      body: 'Não precisa pagar nem ter conta em corretora. Lá saem os avisos de sessão, as análises do dia e o time responde dúvidas de conta, plataforma e conteúdo.',
+      title: 'Aulas gravadas com o gráfico aberto',
+      body: 'A marcação da zona, o critério de entrada e o lugar do stop aparecem antes do resultado, e não depois.',
     },
     {
-      title: 'Acesso às aulas',
-      body: facts.accessHow,
-      todo: 'como o aluno ganha acesso às aulas',
+      title: 'Sala VIP ao vivo',
+      body: 'Traders operando com a tela aberta e explicando cada entrada na hora, com acerto e com erro.',
     },
     {
-      title: `Se quiser operar, crie conta na ${broker} que usamos`,
-      body: 'É opcional. Se já tiver conta nela, pule este passo. Depósitos e saques são feitos direto na corretora, com a sua autenticação.',
+      title: 'Grupo gratuito no Telegram',
+      body: 'Avisos de sessão, análises do dia e o time respondendo dúvidas de conta, plataforma e conteúdo.',
     },
-    {
-      title: 'Começar pelos Fundamentos',
-      body: 'Sem pular etapa. As trilhas seguem a ordem Fundamentos, Análise técnica, Leitura de fluxo e Gestão de risco.',
-    },
-  ] as { title: string; body: Maybe<string>; todo?: string }[],
-}
-
-export const vip = {
-  title: 'Operação ao vivo, com a tela aberta',
-  body:
-    'Na Sala VIP os traders operam ao vivo e explicam cada entrada na hora. A sessão fica registrada no grupo, com acerto e com erro.',
-  // TODO: grade real de sessões (dia, horário, tema, quem conduz).
-  schedule: null as Maybe<{ day: string; time: string; session: string; host: string }[]>,
-  playbookTitle: 'Como cada setup do Playbook é documentado',
-  playbookBody: 'Todo setup tem os mesmos campos. Dá para repetir, medir e revisar cada operação.',
-  playbookFields: [
-    { k: 'Entrada', v: 'O que precisa acontecer no gráfico para entrar.' },
-    { k: 'Saída', v: 'Onde a operação é encerrada no ganho.' },
-    { k: 'Stop', v: 'Onde a leitura está errada e a operação sai no prejuízo.' },
-    { k: 'Posição', v: 'Quanto do capital vai nessa operação.' },
   ],
-  // TODO: print real de uma ficha do Playbook ou da plataforma
-  playbookImage: null as Maybe<string>,
 }
 
-// Número real informado pelo cliente. Os outros ficam ocultos até existir dado.
-export const kpis: { value: Maybe<string>; label: string; todo?: string }[] = [
-  // TODO: confirmar o rótulo exato: "alunos cadastrados" ou "membros da comunidade"
-  { value: '16.000+', label: 'alunos cadastrados' },
-  { value: null, label: 'aulas gravadas', todo: 'número de aulas' },
-  { value: null, label: 'horas de conteúdo', todo: 'horas de conteúdo' },
-  { value: null, label: 'anos de operação', todo: 'tempo de operação' },
-]
+export const steps = {
+  badge: 'Como começar',
+  title: 'Comece em 3 passos.',
+  items: [
+    {
+      title: 'Entre no grupo gratuito',
+      body: 'Não precisa pagar nem ter conta em corretora. É por lá que a gente avisa as sessões e responde dúvidas.',
+    },
+    {
+      title: 'Crie conta na corretora que usamos',
+      body: 'Opcional. É onde a gente opera e grava as aulas. Se já tiver conta nela, pule este passo.',
+    },
+    {
+      title: 'Comece pelos Fundamentos',
+      body: 'A primeira trilha explica a plataforma, o candle e o timeframe. O resto vem depois, na ordem.',
+    },
+  ],
+  accessTodo: 'como o aluno ganha acesso às aulas',
+}
+
+export const team = {
+  badge: 'Quem está por trás',
+  title: 'Feita por quem opera.',
+  teachersTitle: 'Quem ensina',
+  teachersBody: 'Mateus Menezes e Adriana Costa operam na mesma plataforma em que dão aula.',
+  teachersLink: 'Conhecer os experts',
+  vipTitle: 'Sala VIP ao vivo',
+  vipBody: 'Conduzida pela Adriana, com as operações abertas na tela do começo ao fim da sessão.',
+  supportTitle: 'Suporte no Telegram',
+  supportBody: 'Dúvidas de conta, plataforma e conteúdo respondidas pelo time, dentro do grupo gratuito.',
+}
+
+// Números: só dado real aparece. O contador anima até o valor final,
+// mas o valor final já está no HTML (sem JS ou com movimento reduzido).
+export const stats = {
+  title: 'Ultron em números',
+  items: [
+    // Dado real informado pelo cliente.
+    // TODO: confirmar o rótulo exato ("alunos cadastrados" ou "membros da comunidade")
+    { value: 16000, suffix: '+', label: 'alunos cadastrados' },
+    { value: null, suffix: '', label: 'aulas gravadas', todo: 'número de aulas' },
+    { value: null, suffix: 'h', label: 'de conteúdo', todo: 'horas de conteúdo' },
+    { value: null, suffix: '', label: 'anos de operação', todo: 'tempo de operação' },
+  ] as { value: Maybe<number>; suffix: string; label: string; todo?: string }[],
+}
+
+export const money = {
+  badge: 'Seu dinheiro',
+  title: 'Onde fica o seu dinheiro',
+  body: 'Na sua conta, na corretora. A Ultron ensina; quem opera é você.',
+  listTitle: 'A Ultron não toca no seu capital',
+  list: [
+    'Não recebe depósitos',
+    'Não acessa a sua conta nem o seu saldo',
+    'Não opera por você',
+    'Não faz gestão de recursos',
+    'Não promete resultado nem garante ganho',
+  ],
+  cards: [
+    {
+      title: 'Depósitos e saques na corretora',
+      body: 'Feitos direto na sua conta, com a sua autenticação. A Ultron não participa dessa etapa.',
+    },
+    {
+      title: 'Sem vínculo com a corretora',
+      body: 'A gente opera nela e grava as aulas nela. Não somos parceiros e não recebemos nada pelo seu cadastro.',
+    },
+    {
+      title: 'Conteúdo educacional',
+      body: 'Nada aqui é recomendação de investimento. Operar envolve alto risco e pode levar à perda total do capital.',
+    },
+  ],
+}
 
 export const proof = {
-  title: 'Prints que os alunos mandaram',
-  body: 'Conversas reais de alunos com o time. Cortamos nome, foto e dados pessoais; o resto está como veio.',
+  badge: 'Feedbacks',
+  title: 'O que os alunos mandam no grupo',
+  body: 'Prints reais. Cortamos nome, foto e dados pessoais; o resto está como veio.',
   disclaimer: 'Resultados individuais. Não representam garantia de ganho.',
   // Rótulo de cada print, na ordem de src/assets/results/result-N.webp
   captions: ['Telegram · 02/11/2025', 'Telegram', 'Telegram', 'Telegram', 'WhatsApp', 'WhatsApp'],
 }
 
-export const money = {
-  title: 'Onde fica o seu dinheiro',
-  body: 'Na sua conta, na corretora. A Ultron ensina; quem opera é você.',
-  does: [
-    'Ensina a operar, com aulas gravadas e sessões ao vivo',
-    'Mostra as próprias operações na Sala VIP, com acerto e erro',
-    'Responde dúvidas de conta, plataforma e conteúdo no Telegram',
-  ],
-  doesNot: [
-    'Não recebe depósitos e não tem acesso ao seu saldo',
-    'Não opera por você e não faz gestão de recursos',
-    'Não é corretora, não representa a corretora e não recebe nada pelo seu cadastro nela',
-    'Não promete resultado nem garante ganho',
-  ],
+export const finalCta = {
+  title: 'Comece pelo grupo gratuito.',
+  body: 'Entre, veja como o time trabalha no dia a dia e decida depois se quer operar junto.',
+  // Só o que é de fato gratuito: o grupo do Telegram. Sala VIP não entra aqui.
+  checks: ['Entrada gratuita', 'Sem cadastro em corretora', 'Avisos de sessão e análises do dia'],
 }
 
 // `todo`: dado que falta quando `a` é null. `partialTodo`: resposta existe, mas falta completar.
@@ -190,19 +206,24 @@ export const faq: { q: string; a: Maybe<string>; todo?: string; partialTodo?: st
   },
   { q: 'Como tenho acesso às aulas?', a: facts.accessHow, todo: 'como o aluno ganha acesso às aulas' },
   {
-    q: 'A Ultron ganha alguma coisa se eu abrir conta na corretora?',
-    a: 'Não. O botão da corretora é só um atalho para a página de cadastro dela. Ele não identifica você e a Ultron não recebe nada por ele.',
-  },
-  { q: 'Qual é a corretora?', a: facts.brokerName, todo: 'nome da corretora' },
-  {
     q: 'Quanto custa?',
     a: facts.access ? `O grupo do Telegram é gratuito. ${facts.access}` : 'O grupo do Telegram é gratuito.',
     partialTodo: facts.access ? undefined : 'custo das aulas e da Sala VIP',
   },
   {
+    q: 'O que é a Sala VIP?',
+    a: 'Sessões ao vivo em que os traders operam com a tela aberta e explicam cada entrada na hora.',
+    partialTodo: vipRoom.conditions ? undefined : 'link e condições da Sala VIP',
+  },
+  {
     q: 'Preciso abrir conta na corretora?',
     a: 'Não. Para entrar no grupo do Telegram não precisa. Criar conta na corretora que usamos nas aulas é opcional, para quem quer operar na mesma plataforma.',
   },
+  {
+    q: 'A Ultron ganha alguma coisa se eu abrir conta na corretora?',
+    a: 'Não. O botão da corretora é só um atalho para a página de cadastro dela. Ele não identifica você e a Ultron não recebe nada por ele.',
+  },
+  { q: 'Qual é a corretora?', a: facts.brokerName, todo: 'nome da corretora' },
   {
     q: 'Qual o valor mínimo para operar?',
     a: facts.minDeposit
@@ -216,23 +237,21 @@ export const faq: { q: string; a: Maybe<string>; todo?: string; partialTodo?: st
     a: 'Não. O conteúdo começa pelos Fundamentos e só avança para setup depois que a base e a gestão de risco estão firmes.',
   },
   {
-    q: 'O que tem além das aulas gravadas?',
-    a: 'Sessões ao vivo na Sala VIP, revisão de operação e o time respondendo no grupo do Telegram.',
-  },
-  {
     q: 'Como faço depósitos e saques?',
     a: 'Direto na corretora, pela sua conta. A Ultron não recebe depósitos e não tem acesso ao seu saldo.',
   },
   {
     q: 'Dá para acompanhar pelo celular?',
-    a: 'Dá. Trilhas, grupo no Telegram e sessões ao vivo funcionam no celular, e a plataforma da corretora também.',
+    a: 'Dá. Aulas, grupo no Telegram e sessões ao vivo funcionam no celular, e a plataforma da corretora também.',
   },
-  { q: 'Como falo com o suporte?', a: 'Pelo grupo no Telegram. O time responde dúvidas de conta, plataforma e conteúdo.' },
 ]
 
-export const finalCta = {
-  title: 'Comece pelo grupo gratuito no Telegram.',
-  body: 'Não precisa pagar nem abrir conta em corretora para entrar. Veja como o time trabalha no dia a dia e decida depois se quer operar junto.',
+export const faqSection = {
+  badge: 'Perguntas frequentes',
+  title: 'FAQ',
+  body: 'O que perguntam antes de entrar.',
+  moreTitle: 'Ainda tem dúvidas?',
+  moreBody: 'Pergunte no grupo. O time responde por lá.',
 }
 
 // Texto do aviso legal definido pelo cliente. Aparece aberto no rodapé das duas páginas.
@@ -241,6 +260,10 @@ export const disclaimer = [
   `Não temos vínculo com a ${broker}: operamos na plataforma e ensinamos a operar nela.`,
   'O conteúdo é educacional e não constitui recomendação de investimento. Operações no mercado financeiro envolvem alto risco e podem resultar na perda total do capital. Resultados passados, inclusive os mostrados neste site, não garantem resultados futuros.',
 ].join(' ')
+
+export const footer = {
+  about: 'Empresa de educação em trading. Aulas gravadas com o gráfico aberto, Sala VIP ao vivo e grupo gratuito no Telegram.',
+}
 
 // Nomes conforme referência visual enviada pelo cliente. A página antiga
 // /ultron-academy-2/ credita o instrutor como "Felipe Luna", e um dos prints
@@ -252,7 +275,7 @@ export const instructors = {
     bio: 'Ensina na comunidade a leitura de gráfico e a gestão de risco que usa nas próprias operações.', // TODO: bio real
     since: null as Maybe<string>, // TODO: no mercado desde (ano)
     markets: null as Maybe<string>, // TODO: ativos que opera
-    atUltron: null as Maybe<string>, // TODO: o que faz na Ultron (trilhas, Sala VIP…)
+    atUltron: null as Maybe<string>, // TODO: o que faz na Ultron
   },
   adriana: {
     name: 'Adriana Costa',
@@ -265,7 +288,7 @@ export const instructors = {
 }
 
 export const expertsPage = {
-  label: 'Experts',
+  badge: 'Experts',
   title: 'Quem dá as aulas e conduz a Sala VIP',
   body: 'Os dois operam na mesma plataforma em que ensinam, e usam nas aulas as estratégias das próprias operações.',
 }

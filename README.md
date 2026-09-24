@@ -30,12 +30,12 @@ Pendentes hoje:
 - [ ] `facts.minDeposit`: depósito mínimo
 - [ ] `facts.accessHow`: como o aluno ganha acesso às aulas
 - [ ] `facts.signals`: o grupo do Telegram passa sinais?
-- [ ] `facts.liveSchedule` e `vip.schedule`: dias e horários da Sala VIP
+- [ ] `vipRoom.link` e `vipRoom.conditions`: link e condições da Sala VIP
+- [ ] Print real da plataforma para o mockup do hero (`PlatformMockup.tsx`)
 - [ ] `facts.cnpj`
 - [ ] `links.terms` e `links.privacy`
 - [ ] `kpis`: aulas, horas, anos (só "16.000+ alunos" é dado confirmado; confirmar o rótulo "alunos cadastrados" x "membros da comunidade")
-- [ ] `tracks`: validar a ementa (5 trilhas confirmadas, material antigo citava 7), nº de aulas e duração
-- [ ] `vip.playbookImage`: print real da plataforma ou de uma ficha do Playbook
+- [ ] `tracks`: validar a ementa (5 trilhas confirmadas, material antigo citava 7)
 - [ ] `instructors`: confirmar o nome (Mateus Menezes x Felipe Luna; um print agradece a "Felipe e Vitor"), bio, ano de início, ativos que opera, papel na Ultron
 - [ ] `assets`: confirmar os mercados que aparecem nas aulas
 - [ ] OG image: criar `public/og-cover.png` (1200x630) e reativar a tag comentada nos dois HTML
@@ -55,18 +55,29 @@ fictícia. Nenhum número, depoimento ou nome inventado.
 
 ## Direção visual
 
-Referência: software de trading e ferramentas de engenharia, não "futurista".
+Layout e ritmo inspirados em https://www.hezilex.com/ (estrutura de seções,
+header flutuante, hero centralizado com mockup, ticker, números grandes em
+gradiente, bloco claro no meio, faixa de CTA em gradiente, FAQ em acordeão,
+wordmark gigante no rodapé), recriados do zero com a identidade da Ultron.
+Nada de texto, imagem, ícone ou código deles foi copiado.
 
-- Coluna central de 1200px com réguas verticais de 1px (`.frame`), seções
-  separadas por régua horizontal e numeradas (`01 / Conteúdo`), via
-  `src/components/ui/Section.tsx`.
-- Montserrat para títulos, Inter para texto, **JetBrains Mono** para números,
-  códigos e rótulos (`.label`, `.num` com `tabular-nums`).
-- Cantos de 2 a 4px, sem sombra, sem glow, sem vidro, sem gradiente.
-- Ciano só para o que é ação ou destaque (botão principal, índice da seção).
-  Verde e vermelho reservados para alta e baixa.
-- Movimento só em hover (150ms). FAQ com `<details>` nativo. Sem
-  framer-motion e sem GSAP.
+- Ciano/azul da marca no lugar do laranja da referência. Montserrat 600 nos
+  títulos, Inter no texto, número do contador em JetBrains Mono.
+- Ordem da home: Header → Hero (mockup ilustrativo) → Ticker → Vantagens →
+  Comece em 3 passos → Feita por quem opera (bloco claro, id `experts`) →
+  Números (bloco claro) → Onde fica o seu dinheiro → Feedbacks (prints) →
+  CTA final → FAQ → Rodapé.
+- Animações sem biblioteca: entrada ao rolar com IntersectionObserver
+  (`src/lib/useReveal.ts` + `data-reveal`), marquees e acordeão em CSS,
+  contador em `src/components/ui/Counter.tsx`. Com `prefers-reduced-motion`
+  tudo aparece parado; o contador já vem com o valor final no HTML. Sem JS,
+  o `<noscript>` do `index.html` mostra o essencial e o aviso legal.
+- Ícones do ticker em `src/assets/icons/` (cryptocurrency-icons CC0 e
+  flag-icons MIT; ver `LICENSES.md` na pasta).
+- Mockup do hero (`PlatformMockup.tsx`) é uma recriação marcada como
+  "Imagem ilustrativa". TODO: trocar pelo print real da plataforma.
+- Sala VIP: citada como parte da Ultron, sem botão, sem link e sem dizer se é
+  gratuita ou paga. Nunca aparece junto do que é gratuito (o grupo do Telegram).
 
 ## Prints de alunos
 

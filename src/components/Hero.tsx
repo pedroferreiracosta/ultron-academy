@@ -1,67 +1,57 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Zap } from 'lucide-react'
 import Button from './ui/Button'
-import Todo from './ui/Todo'
-import { brokerCta, ctaNote, facts, hero, heroSpecs, links, riskLine, telegramCta } from '../content/site'
+import PlatformMockup from './PlatformMockup'
+import { cta, hero, links } from '../content/site'
 
 export default function Hero() {
   return (
-    <section id="hero">
-      <div className="frame">
-        <div className="border-b px-4 py-2.5 sm:px-8">
-          <p className="label">{hero.label}</p>
+    <section id="topo" className="noise relative overflow-hidden bg-fundo pt-[150px] sm:pt-[180px]">
+      {/* Brilho azul da marca no lugar do laranja da referência */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-[70%]"
+        style={{
+          background:
+            'radial-gradient(60% 60% at 50% 100%, rgba(30,107,255,0.35) 0%, rgba(10,47,119,0.25) 40%, transparent 75%)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="container-x text-center">
+        <span className="badge">
+          <Zap size={15} aria-hidden="true" />
+          {hero.badge}
+        </span>
+
+        <h1 className="mx-auto mt-7 max-w-[1000px] text-[clamp(2.5rem,6.2vw,5.2rem)] font-semibold leading-[1.08] tracking-[-0.025em]">
+          {hero.title}
+        </h1>
+
+        <p className="lead mx-auto mt-6 max-w-[640px] text-aco">{hero.body}</p>
+
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <Button href={links.telegram} target="_blank" rel="noopener noreferrer" className="w-full max-w-[400px] sm:w-auto">
+            {cta.telegram}
+            <ArrowRight size={20} aria-hidden="true" />
+          </Button>
+          <Button href={links.broker} target="_blank" rel="noopener noreferrer" variant="outline" className="w-full max-w-[400px] whitespace-normal sm:w-auto">
+            {cta.broker}
+            <ArrowUpRight size={20} aria-hidden="true" />
+          </Button>
         </div>
 
-        <div className="grid lg:grid-cols-12">
-          <div className="px-4 pb-12 pt-10 sm:px-8 sm:pt-16 lg:col-span-7 lg:border-r lg:pb-16">
-            <h1 className="text-[clamp(2rem,4.4vw,3.4rem)] font-extrabold leading-[1.06] tracking-[-0.015em]">
-              {hero.title} <span className="text-aco">{hero.titleSecond}</span>
-            </h1>
+        <p className="mt-8 text-sm text-aco">{cta.note}</p>
+      </div>
 
-            <p className="mt-6 max-w-[34rem] text-base text-prata/85 sm:text-lg">{hero.body}</p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button href={links.telegram} target="_blank" rel="noopener noreferrer" size="lg">
-                {telegramCta}
-                <ArrowUpRight size={18} aria-hidden="true" />
-              </Button>
-              <Button href={links.broker} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
-                {brokerCta}
-              </Button>
-            </div>
-
-            <p className="mt-4 text-sm text-aco">
-              {ctaNote}{' '}
-              {facts.accessHow ? `Acesso às aulas: ${facts.accessHow}` : <Todo>como o aluno ganha acesso às aulas</Todo>}
-            </p>
-
-            <p className="mt-8 max-w-[34rem] border-l-2 border-aco/40 pl-3 text-[13px] leading-relaxed text-aco">{riskLine}</p>
-          </div>
-
-          <div className="border-t lg:col-span-5 lg:border-t-0">
-            <div className="flex items-center justify-between border-b px-4 py-2.5 sm:px-8">
-              <p className="label">Ficha técnica</p>
-            </div>
-            <dl>
-              {heroSpecs.map((s) =>
-                s.value || (import.meta.env.DEV && s.todo) ? (
-                  <div key={s.k} className="grid grid-cols-[7.5rem_1fr] items-baseline gap-4 border-b px-4 py-3.5 last:border-b-0 sm:px-8">
-                    <dt className="label">{s.k}</dt>
-                    <dd className={s.mono ? 'num text-lg font-medium text-branco' : 'text-sm text-prata'}>
-                      {s.value}
-                      {s.todo && (
-                        <>
-                          {s.value && ' '}
-                          <Todo>{s.todo}</Todo>
-                        </>
-                      )}
-                    </dd>
-                  </div>
-                ) : null,
-              )}
-            </dl>
-          </div>
+      <div className="container-x mt-14 sm:mt-20">
+        <div className="relative mx-auto max-w-[1180px] translate-y-6">
+          <PlatformMockup />
         </div>
       </div>
+      {/* Esfuma a base do mockup para a faixa de ativos */}
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-fundo"
+        aria-hidden="true"
+      />
     </section>
   )
 }

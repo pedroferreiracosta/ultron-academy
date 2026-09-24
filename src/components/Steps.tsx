@@ -1,35 +1,36 @@
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Button from './ui/Button'
-import Section from './ui/Section'
 import Todo from './ui/Todo'
-import { links, steps, telegramCta } from '../content/site'
+import { cta, facts, links, steps } from '../content/site'
 
 export default function Steps() {
-  // Passo sem dado real some em produção; a numeração acompanha
-  const items = steps.items.filter((s) => s.body || import.meta.env.DEV)
-
   return (
-    <Section
-      id="por-onde-comecar"
-      index="02"
-      name="Por onde começar"
-      title={steps.title}
-      aside={
-        <Button href={links.telegram} target="_blank" rel="noopener noreferrer" className="mt-2">
-          {telegramCta}
-          <ArrowUpRight size={16} aria-hidden="true" />
-        </Button>
-      }
-    >
-      <ol className="border-t">
-        {items.map((s, i) => (
-          <li key={s.title} className="grid gap-2 border-b py-5 sm:grid-cols-[6rem_minmax(0,18rem)_1fr] sm:gap-8">
-            <span className="label pt-1 text-ciano">Passo {String(i + 1).padStart(2, '0')}</span>
-            <h3 className="text-lg font-bold leading-snug">{s.title}</h3>
-            <p className="text-sm text-aco sm:pt-1">{s.body ?? <Todo>{s.todo}</Todo>}</p>
-          </li>
-        ))}
-      </ol>
-    </Section>
+    <section id="como-comecar" className="bg-fundo pb-28 pt-10 sm:pb-32">
+      <div className="container-x text-center">
+        <div data-reveal>
+          <span className="badge">{steps.badge}</span>
+          <h2 className="h-section mt-6">{steps.title}</h2>
+        </div>
+
+        <ol className="mt-16 grid gap-14 md:grid-cols-3 md:gap-10">
+          {steps.items.map((s, i) => (
+            <li key={s.title} data-reveal style={{ ['--reveal-delay' as string]: `${i * 120}ms` }}>
+              <span className="text-gradient block font-heading text-[clamp(6rem,11vw,9rem)] font-medium leading-none">{i + 1}</span>
+              <h3 className="mt-6 text-[clamp(1.4rem,2.1vw,1.85rem)] font-semibold">{s.title}</h3>
+              <p className="lead mx-auto mt-4 max-w-sm text-aco">{s.body}</p>
+            </li>
+          ))}
+        </ol>
+
+        {!facts.accessHow && <Todo className="mt-10">{steps.accessTodo}</Todo>}
+
+        <div className="mt-14" data-reveal>
+          <Button href={links.telegram} target="_blank" rel="noopener noreferrer">
+            {cta.telegram}
+            <ArrowRight size={20} aria-hidden="true" />
+          </Button>
+        </div>
+      </div>
+    </section>
   )
 }

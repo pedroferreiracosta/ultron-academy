@@ -1,31 +1,34 @@
 import Header from './components/Header'
 import Hero from './components/Hero'
 import AssetTicker from './components/AssetTicker'
-import Method from './components/Method'
+import Advantages from './components/Advantages'
 import Steps from './components/Steps'
-import VipRoom from './components/VipRoom'
+import Team from './components/Team'
 import Stats from './components/Stats'
-import ResultsProof from './components/ResultsProof'
-import Trust from './components/Trust'
-import Faq from './components/Faq'
+import Money from './components/Money'
+import Proof from './components/Proof'
 import FinalCta from './components/FinalCta'
+import Faq from './components/Faq'
 import Footer from './components/Footer'
+import { useReveal } from './lib/useReveal'
 
 export default function App() {
+  useReveal()
+
   return (
     <>
       <Header />
       <main>
         <Hero />
         <AssetTicker />
-        <Method />
+        <Advantages />
         <Steps />
-        <VipRoom />
+        <Team />
         <Stats />
-        <ResultsProof />
-        <Trust />
-        <Faq />
+        <Money />
+        <Proof />
         <FinalCta />
+        <Faq />
       </main>
       <Footer />
     </>
