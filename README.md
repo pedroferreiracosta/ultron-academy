@@ -26,7 +26,7 @@ Preencher o valor faz o dado aparecer nos dois ambientes.
 Pendentes hoje:
 
 - [ ] `facts.brokerName`: nome da corretora
-- [ ] `facts.access`: gratuito ou pago (valor)
+- [ ] `facts.access`: custo das aulas e da Sala VIP (o grupo do Telegram já é gratuito)
 - [ ] `facts.minDeposit`: depósito mínimo
 - [ ] `facts.accessHow`: como o aluno ganha acesso às aulas
 - [ ] `facts.signals`: o grupo do Telegram passa sinais?
@@ -43,10 +43,10 @@ Pendentes hoje:
 ## Links reais
 
 - Cadastro na corretora: `https://r.ryvon.io/l/1070/913`. É só um atalho para a página de cadastro: não é link de afiliado, não identifica o aluno e a Ultron não recebe nada por ele.
-- Grupo no Telegram: `https://t.me/+c1bmO-4z90M0MjMx`
+- Grupo no Telegram: `https://t.me/+c1bmO-4z90M0MjMx`. Grupo **gratuito**, porta de entrada: qualquer pessoa entra sem pagar e sem conta em corretora. É o CTA principal do site.
 
 A Ultron **não tem vínculo** com a corretora: opera nela e ensina a operar
-nela. A copy não pode sugerir parceria, representação, nem que abrir conta pelo link seja condição para estudar com a Ultron. A corretora aparece sempre como "a que usamos nas aulas". O aviso legal e de
+nela. Só existem esses dois destinos de CTA: o texto do botão varia por seção, mas nunca promete o que o link não entrega (ex.: "Entrar na Sala VIP" ou "Aprender com Mateus" levando à corretora). O botão da corretora diz sempre que é o cadastro na corretora, opcional. A copy não pode sugerir parceria, representação, nem que abrir conta pelo link seja condição para estudar com a Ultron. A corretora aparece sempre como "a que usamos nas aulas". O aviso legal e de
 risco no rodapé (`disclaimer` em `site.ts`) é obrigatório e aparece nas duas
 páginas, sempre aberto.
 

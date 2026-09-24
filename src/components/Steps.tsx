@@ -2,7 +2,7 @@ import { ArrowUpRight } from 'lucide-react'
 import Button from './ui/Button'
 import Section from './ui/Section'
 import Todo from './ui/Todo'
-import { brokerCta, links, steps } from '../content/site'
+import { links, steps, telegramCta } from '../content/site'
 
 export default function Steps() {
   // Passo sem dado real some em produção; a numeração acompanha
@@ -15,8 +15,8 @@ export default function Steps() {
       name="Por onde começar"
       title={steps.title}
       aside={
-        <Button href={links.broker} target="_blank" rel="noopener noreferrer" className="mt-2">
-          {brokerCta}
+        <Button href={links.telegram} target="_blank" rel="noopener noreferrer" className="mt-2">
+          {telegramCta}
           <ArrowUpRight size={16} aria-hidden="true" />
         </Button>
       }

@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import Button from './ui/Button'
 import Todo from './ui/Todo'
-import { brokerCta, links } from '../content/site'
+import { links, telegramCta } from '../content/site'
 
 interface Expert {
   name: string
@@ -60,8 +60,8 @@ export default function ExpertProfile({ expert, index }: { expert: Expert; index
             </dl>
 
             <div className="mt-8">
-              <Button href={links.broker} target="_blank" rel="noopener noreferrer" variant="secondary">
-                {brokerCta}
+              <Button href={links.telegram} target="_blank" rel="noopener noreferrer" variant="secondary">
+                {telegramCta}
                 <ArrowUpRight size={16} aria-hidden="true" />
               </Button>
             </div>

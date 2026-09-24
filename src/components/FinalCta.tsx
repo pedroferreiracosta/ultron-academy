@@ -1,6 +1,6 @@
 import { ArrowUpRight } from 'lucide-react'
 import Button from './ui/Button'
-import { brokerCta, finalCta, links, riskLine, telegramCta } from '../content/site'
+import { brokerCta, ctaNote, finalCta, links, riskLine, telegramCta } from '../content/site'
 
 export default function FinalCta() {
   return (
@@ -14,13 +14,14 @@ export default function FinalCta() {
           <p className="mt-5 max-w-lg text-aco">{finalCta.body}</p>
         </div>
         <div className="flex flex-col justify-center gap-3 border-t px-4 py-10 sm:px-8 lg:col-span-5 lg:border-t-0">
-          <Button href={links.broker} target="_blank" rel="noopener noreferrer" size="lg">
-            {brokerCta}
+          <Button href={links.telegram} target="_blank" rel="noopener noreferrer" size="lg">
+            {telegramCta}
             <ArrowUpRight size={18} aria-hidden="true" />
           </Button>
-          <Button href={links.telegram} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
-            {telegramCta}
+          <Button href={links.broker} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
+            {brokerCta}
           </Button>
+          <p className="text-[13px] leading-relaxed text-aco">{ctaNote}</p>
           <p className="mt-3 text-[13px] leading-relaxed text-aco">{riskLine}</p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import Button from './ui/Button'
-import { brokerCtaShort, links } from '../content/site'
+import { links, telegramCtaShort } from '../content/site'
 import logo from '../assets/ultron-logo-96.webp'
 
 const navLinks = (prefix: string) => [
@@ -42,16 +42,17 @@ export default function Header({ page = 'home' }: { page?: 'home' | 'experts' })
 
         <div className="flex items-center gap-2">
           <a
-            href={links.telegram}
+            href={links.broker}
             target="_blank"
             rel="noopener noreferrer"
+            title="Cadastro na corretora que usamos nas aulas. Opcional."
             className="hidden text-[13px] text-aco transition-colors duration-150 hover:text-branco md:inline"
           >
-            Telegram
+            Corretora que usamos
           </a>
-          <Button href={links.broker} target="_blank" rel="noopener noreferrer" className="md:ml-4" title="Abre o cadastro da corretora que usamos nas aulas">
-            <span className="sm:hidden">{brokerCtaShort}</span>
-            <span className="hidden sm:inline">Corretora que usamos</span>
+          <Button href={links.telegram} target="_blank" rel="noopener noreferrer" className="md:ml-4">
+            <span className="sm:hidden">{telegramCtaShort}</span>
+            <span className="hidden sm:inline">Entrar no grupo gratuito</span>
           </Button>
           <button
             type="button"
@@ -69,10 +70,11 @@ export default function Header({ page = 'home' }: { page?: 'home' | 'experts' })
       {open && (
         <nav id="menu-mobile" className="border-t lg:hidden" aria-label="Seções">
           <div className="frame flex flex-col">
-            {[...navLinks(prefix), { label: 'Grupo no Telegram', href: links.telegram }].map((link, i) => (
+            {[...navLinks(prefix), { label: 'Corretora que usamos (opcional)', href: links.broker }].map((link, i) => (
               <a
                 key={link.label}
                 href={link.href}
+                {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 onClick={() => setOpen(false)}
                 className="flex min-h-[48px] items-center gap-4 border-b px-4 text-sm text-prata last:border-b-0"
               >

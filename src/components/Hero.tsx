@@ -1,7 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import Button from './ui/Button'
 import Todo from './ui/Todo'
-import { brokerCta, brokerNote, facts, hero, heroSpecs, links, riskLine, telegramCta } from '../content/site'
+import { brokerCta, ctaNote, facts, hero, heroSpecs, links, riskLine, telegramCta } from '../content/site'
 
 export default function Hero() {
   return (
@@ -19,18 +19,18 @@ export default function Hero() {
 
             <p className="mt-6 max-w-[34rem] text-base text-prata/85 sm:text-lg">{hero.body}</p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Button href={links.broker} target="_blank" rel="noopener noreferrer" size="lg">
-                {brokerCta}
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button href={links.telegram} target="_blank" rel="noopener noreferrer" size="lg">
+                {telegramCta}
                 <ArrowUpRight size={18} aria-hidden="true" />
               </Button>
-              <Button href={links.telegram} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
-                {telegramCta}
+              <Button href={links.broker} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
+                {brokerCta}
               </Button>
             </div>
 
             <p className="mt-4 text-sm text-aco">
-              {brokerNote}{' '}
+              {ctaNote}{' '}
               {facts.accessHow ? `Acesso às aulas: ${facts.accessHow}` : <Todo>como o aluno ganha acesso às aulas</Todo>}
             </p>
 

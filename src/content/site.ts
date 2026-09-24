@@ -14,7 +14,8 @@ export const links = {
   // para a página de cadastro da corretora: não é link de afiliado, não
   // identifica o aluno e a Ultron não recebe nada por ele.
   broker: 'https://r.ryvon.io/l/1070/913',
-  // Link real extraído de https://ultronacademy.online/links/
+  // Link real extraído de https://ultronacademy.online/links/. Grupo GRATUITO:
+  // é a porta de entrada da Ultron. Não exige pagamento nem conta em corretora.
   telegram: 'https://t.me/+c1bmO-4z90M0MjMx',
   tiktok: 'https://www.tiktok.com/@ultronacademy',
   terms: null as Maybe<string>, // TODO: URL dos termos de uso
@@ -24,7 +25,8 @@ export const links = {
 /** Fatos sobre a oferta. Tudo que for `null` fica oculto em produção. */
 export const facts = {
   brokerName: null as Maybe<string>, // TODO: nome da corretora
-  access: null as Maybe<string>, // TODO: "Gratuito" ou "Pago: R$ …"
+  // TODO: custo das aulas e da Sala VIP (o grupo do Telegram já é gratuito)
+  access: null as Maybe<string>,
   minDeposit: null as Maybe<string>, // TODO: depósito mínimo da corretora (ex.: "US$ 10")
   // TODO: como o aluno ganha acesso às aulas (ex.: "Entrando no grupo do Telegram")
   accessHow: null as Maybe<string>,
@@ -35,12 +37,14 @@ export const facts = {
 
 const broker = facts.brokerName ?? 'corretora'
 
-// A corretora aparece como "a que usamos nas aulas", nunca como condição
-// para estudar com a Ultron.
-export const brokerCta = facts.brokerName ? `Abrir conta na ${facts.brokerName}` : 'Abrir conta na corretora que usamos'
-export const brokerCtaShort = 'Corretora'
-export const brokerNote = `É a ${broker} onde a gente opera e onde as aulas são gravadas. A Ultron não tem vínculo com ela e não recebe nada pelo seu cadastro.`
-export const telegramCta = 'Entrar no grupo do Telegram'
+// Só existem dois destinos de CTA no site:
+// 1. Telegram: grupo gratuito, porta de entrada. É o CTA principal.
+// 2. Corretora: só o cadastro na corretora onde operamos e gravamos as aulas.
+//    Opcional. Nunca sugerir que dá acesso à Ultron, libera aula ou é obrigatório.
+export const telegramCta = 'Entrar no grupo gratuito do Telegram'
+export const telegramCtaShort = 'Grupo gratuito'
+export const brokerCta = facts.brokerName ? `Criar conta na ${facts.brokerName}` : 'Criar conta na corretora que usamos'
+export const ctaNote = `O grupo do Telegram é gratuito e não exige conta em corretora. Criar conta na ${broker} é opcional: é onde a gente opera e grava as aulas. A Ultron não tem vínculo com ela e não recebe nada pelo seu cadastro.`
 
 export const riskLine =
   'Operar no mercado financeiro envolve alto risco e pode levar à perda total do capital. Conteúdo educacional, não é recomendação de investimento.'
@@ -60,14 +64,14 @@ export const heroSpecs: { k: string; value: Maybe<string>; mono?: boolean; todo?
   { k: 'Alunos', value: '16.000+', mono: true },
   { k: 'Conteúdo', value: 'Trilhas gravadas, de Fundamentos a Psicologia' },
   { k: 'Ao vivo', value: facts.liveSchedule ? `Sala VIP · ${facts.liveSchedule}` : 'Sala VIP', todo: facts.liveSchedule ? undefined : 'horário da Sala VIP' },
-  { k: 'Comunidade', value: 'Grupo no Telegram' },
+  { k: 'Comunidade', value: 'Grupo no Telegram, gratuito' },
   {
     k: 'Corretora',
-    value: facts.brokerName ? `${facts.brokerName}, a que usamos nas aulas. Sem vínculo com a Ultron` : 'A que usamos nas aulas. Sem vínculo com a Ultron',
+    value: facts.brokerName ? `${facts.brokerName}, a que usamos nas aulas. Opcional, sem vínculo com a Ultron` : 'A que usamos nas aulas. Opcional, sem vínculo com a Ultron',
     todo: facts.brokerName ? undefined : 'nome da corretora',
   },
   { k: 'Acesso', value: facts.accessHow, todo: 'como o aluno ganha acesso às aulas' },
-  { k: 'Custo', value: facts.access, todo: 'gratuito ou pago' },
+  { k: 'Custo', value: facts.access, todo: 'custo das aulas e da Sala VIP' },
   { k: 'Depósito mín.', value: facts.minDeposit, mono: true, todo: 'depósito mínimo' },
   { k: 'Risco', value: 'Alto. Pode haver perda total do capital.' },
 ]
@@ -108,8 +112,8 @@ export const steps = {
   title: 'Por onde começar',
   items: [
     {
-      title: `Abra sua conta na ${broker} que usamos nas aulas`,
-      body: 'Se já tiver conta nela, pule este passo. Depósitos e saques são feitos direto na corretora, com a sua autenticação.',
+      title: 'Entre no grupo gratuito do Telegram',
+      body: 'Não precisa pagar nem ter conta em corretora. Lá saem os avisos de sessão, as análises do dia e o time responde dúvidas de conta, plataforma e conteúdo.',
     },
     {
       title: 'Acesso às aulas',
@@ -117,8 +121,8 @@ export const steps = {
       todo: 'como o aluno ganha acesso às aulas',
     },
     {
-      title: 'Grupo no Telegram',
-      body: 'Avisos de sessão, análises do dia e o time respondendo dúvidas de conta, plataforma e conteúdo.',
+      title: `Se quiser operar, crie conta na ${broker} que usamos`,
+      body: 'É opcional. Se já tiver conta nela, pule este passo. Depósitos e saques são feitos direto na corretora, com a sua autenticação.',
     },
     {
       title: 'Começar pelos Fundamentos',
@@ -178,7 +182,8 @@ export const money = {
   ],
 }
 
-export const faq: { q: string; a: Maybe<string>; todo?: string }[] = [
+// `todo`: dado que falta quando `a` é null. `partialTodo`: resposta existe, mas falta completar.
+export const faq: { q: string; a: Maybe<string>; todo?: string; partialTodo?: string }[] = [
   {
     q: 'A Ultron é uma corretora?',
     a: 'Não. A Ultron é uma empresa de educação. Você opera na sua própria conta, numa corretora que não tem vínculo com a Ultron. A gente opera nessa mesma plataforma e ensina a operar nela.',
@@ -186,10 +191,18 @@ export const faq: { q: string; a: Maybe<string>; todo?: string }[] = [
   { q: 'Como tenho acesso às aulas?', a: facts.accessHow, todo: 'como o aluno ganha acesso às aulas' },
   {
     q: 'A Ultron ganha alguma coisa se eu abrir conta na corretora?',
-    a: 'Não. O botão do site é só um atalho para a página de cadastro da corretora que usamos nas aulas. Ele não identifica você e a Ultron não recebe nada por ele.',
+    a: 'Não. O botão da corretora é só um atalho para a página de cadastro dela. Ele não identifica você e a Ultron não recebe nada por ele.',
   },
   { q: 'Qual é a corretora?', a: facts.brokerName, todo: 'nome da corretora' },
-  { q: 'Quanto custa?', a: facts.access, todo: 'gratuito ou valor' },
+  {
+    q: 'Quanto custa?',
+    a: facts.access ? `O grupo do Telegram é gratuito. ${facts.access}` : 'O grupo do Telegram é gratuito.',
+    partialTodo: facts.access ? undefined : 'custo das aulas e da Sala VIP',
+  },
+  {
+    q: 'Preciso abrir conta na corretora?',
+    a: 'Não. Para entrar no grupo do Telegram não precisa. Criar conta na corretora que usamos nas aulas é opcional, para quem quer operar na mesma plataforma.',
+  },
   {
     q: 'Qual o valor mínimo para operar?',
     a: facts.minDeposit
@@ -218,8 +231,8 @@ export const faq: { q: string; a: Maybe<string>; todo?: string }[] = [
 ]
 
 export const finalCta = {
-  title: 'Comece pelos Fundamentos, na mesma plataforma em que a gente opera.',
-  body: 'Se preferir conhecer antes, entre no grupo do Telegram e veja como o time trabalha no dia a dia.',
+  title: 'Comece pelo grupo gratuito no Telegram.',
+  body: 'Não precisa pagar nem abrir conta em corretora para entrar. Veja como o time trabalha no dia a dia e decida depois se quer operar junto.',
 }
 
 // Texto do aviso legal definido pelo cliente. Aparece aberto no rodapé das duas páginas.

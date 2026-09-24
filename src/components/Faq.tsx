@@ -32,7 +32,13 @@ export default function Faq() {
                 <span className="hidden group-open:inline">−</span>
               </span>
             </summary>
-            <div className="pb-5 pl-12 pr-6 text-[15px] text-aco">{item.a ?? <Todo>{item.todo}</Todo>}</div>
+            <div className="pb-5 pl-12 pr-6 text-[15px] text-aco">{item.a ? (
+                <>
+                  {item.a} {item.partialTodo && <Todo>{item.partialTodo}</Todo>}
+                </>
+              ) : (
+                <Todo>{item.todo}</Todo>
+              )}</div>
           </details>
         ))}
       </div>
