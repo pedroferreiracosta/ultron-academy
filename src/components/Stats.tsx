@@ -1,37 +1,25 @@
-import Button from './ui/Button'
-import CountUp from './ui/CountUp'
-import Reveal from './ui/Reveal'
-import { kpis, links } from '../content/site'
+import Todo from './ui/Todo'
+import { kpis } from '../content/site'
 
+// Só o que é dado real aparece em produção. Sem contagem animada.
 export default function Stats() {
+  const items = kpis.filter((k) => k.value || import.meta.env.DEV)
+
   return (
-    <section className="relative py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <Reveal>
+    <section aria-label="Números da Ultron" className="border-t bg-grafite/60">
+      <dl className="frame grid grid-cols-2 lg:grid-cols-4">
+        {items.map((k, i) => (
           <div
-            className="relative overflow-hidden rounded-3xl border border-azul/25 px-6 py-12 sm:px-12"
-            style={{ background: 'radial-gradient(ellipse at 20% 0%, rgba(30,107,255,0.35), transparent 55%), #0A2F77' }}
+            key={k.label}
+            className={`border-b px-4 py-6 sm:px-8 lg:border-b-0 ${i % 2 === 0 ? 'border-r' : ''} lg:border-r lg:last:border-r-0 ${items.length === 1 ? 'col-span-2 lg:col-span-4' : ''}`}
           >
-            <div className="grid grid-cols-2 gap-y-10 lg:grid-cols-4">
-              {kpis.map((k) => (
-                <div key={k.label} className="text-center">
-                  <CountUp
-                    value={k.value}
-                    suffix={k.suffix}
-                    className="font-heading text-[clamp(2rem,5vw,3.5rem)] font-extrabold text-branco"
-                  />
-                  <p className="mt-1 text-xs font-medium uppercase tracking-wider text-prata/80">{k.label}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-10 flex justify-center">
-              <Button href={links.broker} target="_blank" rel="noopener noreferrer" size="lg">
-                Fazer parte da Ultron
-              </Button>
-            </div>
+            <dt className="label">{k.label}</dt>
+            <dd className="num mt-2 text-[clamp(2rem,4vw,3rem)] font-medium leading-none text-branco">
+              {k.value ?? <Todo>{k.todo}</Todo>}
+            </dd>
           </div>
-        </Reveal>
-      </div>
+        ))}
+      </dl>
     </section>
   )
 }

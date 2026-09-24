@@ -1,50 +1,28 @@
-import { ArrowRight, Check } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import Button from './ui/Button'
-import Reveal from './ui/Reveal'
-import { CandleChart } from './ui/ChartMockup'
-import { finalCtaPoints, links } from '../content/site'
-import logoIcon from '../assets/logo-ultron-icon.png'
+import { brokerCta, finalCta, links, riskLine, telegramCta } from '../content/site'
 
 export default function FinalCta() {
   return (
-    <section className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-grafite px-6 py-16 text-center sm:px-12">
-            <CandleChart seed={21} count={60} className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 w-full opacity-25" />
-            <div
-              className="pointer-events-none absolute inset-0"
-              style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(10,47,119,0.7), transparent 65%)' }}
-              aria-hidden="true"
-            />
-
-            <div className="relative">
-              <img src={logoIcon} alt="" className="mx-auto h-12 w-auto" />
-              <h2 className="mx-auto mt-6 max-w-2xl text-[clamp(1.9rem,4.4vw,3rem)] font-extrabold leading-tight">
-                Comece hoje a construir a sua consistência.
-              </h2>
-
-              <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-3">
-                {finalCtaPoints.map((p) => (
-                  <li key={p} className="flex items-center gap-2 text-sm text-prata">
-                    <Check size={16} className="text-ciano" aria-hidden="true" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-10 flex flex-wrap justify-center gap-4">
-                <Button href={links.broker} target="_blank" rel="noopener noreferrer" variant="navy" size="lg">
-                  Abrir minha conta
-                  <ArrowRight size={18} aria-hidden="true" />
-                </Button>
-                <Button href={links.telegram} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
-                  Falar com o time
-                </Button>
-              </div>
-            </div>
-          </div>
-        </Reveal>
+    <section className="border-t bg-grafite/60">
+      <div className="frame grid lg:grid-cols-12">
+        <div className="px-4 py-14 sm:px-8 sm:py-20 lg:col-span-7 lg:border-r">
+          <p className="label">
+            <span className="text-ciano">07</span> / Próximo passo
+          </p>
+          <h2 className="mt-5 text-[clamp(1.75rem,3.4vw,2.75rem)] font-bold leading-[1.1]">{finalCta.title}</h2>
+          <p className="mt-5 max-w-lg text-aco">{finalCta.body}</p>
+        </div>
+        <div className="flex flex-col justify-center gap-3 border-t px-4 py-10 sm:px-8 lg:col-span-5 lg:border-t-0">
+          <Button href={links.broker} target="_blank" rel="noopener noreferrer" size="lg">
+            {brokerCta}
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </Button>
+          <Button href={links.telegram} target="_blank" rel="noopener noreferrer" variant="secondary" size="lg">
+            {telegramCta}
+          </Button>
+          <p className="mt-3 text-[13px] leading-relaxed text-aco">{riskLine}</p>
+        </div>
       </div>
     </section>
   )

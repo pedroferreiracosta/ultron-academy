@@ -1,103 +1,88 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import Button from './ui/Button'
-import { links } from '../content/site'
-import logo from '../assets/ultron-logo.png'
+import { brokerCtaShort, links } from '../content/site'
+import logo from '../assets/ultron-logo-96.webp'
 
 const navLinks = (prefix: string) => [
-  { label: 'Como funciona', href: `${prefix}#como-funciona` },
-  { label: 'Estrutura', href: `${prefix}#estrutura` },
-  { label: 'Transparência', href: `${prefix}#transparencia` },
-  { label: 'Experts', href: '/experts.html' },
+  { label: 'Conteúdo', href: `${prefix}#metodo` },
+  { label: 'Por onde começar', href: `${prefix}#por-onde-comecar` },
+  { label: 'Sala VIP', href: `${prefix}#sala-vip` },
+  { label: 'Seu dinheiro', href: `${prefix}#seu-dinheiro` },
+  { label: 'Experts', href: `${import.meta.env.BASE_URL}experts.html` },
   { label: 'FAQ', href: `${prefix}#faq` },
 ]
 
 export default function Header({ page = 'home' }: { page?: 'home' | 'experts' }) {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const prefix = page === 'home' ? '' : '/'
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  const prefix = page === 'home' ? '' : import.meta.env.BASE_URL
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
-      <div
-        className={`w-full max-w-6xl rounded-2xl border transition-all duration-300 ${
-          scrolled || open
-            ? 'border-white/10 bg-grafite/85 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.6)] backdrop-blur-md'
-            : 'border-white/[0.06] bg-grafite/40 backdrop-blur-sm'
-        }`}
-      >
-        <div className="flex items-center justify-between gap-4 px-4 py-2.5 sm:px-5">
+    <header className="sticky top-0 z-50 border-b bg-preto">
+      <div className="frame flex h-14 items-center justify-between gap-4 px-4 sm:px-8">
+        <a
+          href={page === 'home' ? '#hero' : import.meta.env.BASE_URL}
+          aria-label="Ultron Academy, início"
+          className="flex shrink-0 items-center gap-3"
+        >
+          <img src={logo} alt="" width={98} height={96} decoding="async" className="block h-9 w-auto" />
+        </a>
+
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Seções">
+          {navLinks(prefix).map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className="text-[13px] text-aco transition-colors duration-150 hover:text-branco"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
           <a
-            href={page === 'home' ? '#hero' : '/'}
-            aria-label="Ultron Academy, início"
-            className="flex shrink-0 items-center rounded-md"
+            href={links.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden text-[13px] text-aco transition-colors duration-150 hover:text-branco md:inline"
           >
-            <img
-              src={logo}
-              alt="Ultron Academy"
-              width={823}
-              height={805}
-              decoding="async"
-              fetchPriority="high"
-              className="block h-10 w-auto sm:h-11"
-            />
+            Telegram
           </a>
-
-          <nav className="hidden items-center gap-7 lg:flex">
-            {navLinks(prefix).map((link) => (
-              <a key={link.label} href={link.href} className="text-sm text-aco transition-colors hover:text-branco">
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-2">
-            <Button
-              href={links.telegram}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="secondary"
-              className="hidden sm:inline-flex"
-            >
-              Comunidade
-            </Button>
-            <Button href={links.broker} target="_blank" rel="noopener noreferrer" variant="navy">
-              Abrir conta
-            </Button>
-            <button
-              type="button"
-              onClick={() => setOpen((v) => !v)}
-              aria-expanded={open}
-              aria-label={open ? 'Fechar menu' : 'Abrir menu'}
-              className="flex h-11 w-11 items-center justify-center rounded-full text-prata lg:hidden"
-            >
-              {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
-            </button>
-          </div>
+          <Button href={links.broker} target="_blank" rel="noopener noreferrer" className="md:ml-4" title="Abre o cadastro da corretora que usamos nas aulas">
+            <span className="sm:hidden">{brokerCtaShort}</span>
+            <span className="hidden sm:inline">Corretora que usamos</span>
+          </Button>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+            aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+            className="-mr-2 flex h-11 w-11 items-center justify-center text-prata lg:hidden"
+          >
+            {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}
+          </button>
         </div>
+      </div>
 
-        {open && (
-          <nav className="flex flex-col border-t border-white/5 px-4 py-3 lg:hidden">
-            {navLinks(prefix).map((link) => (
+      {open && (
+        <nav id="menu-mobile" className="border-t lg:hidden" aria-label="Seções">
+          <div className="frame flex flex-col">
+            {[...navLinks(prefix), { label: 'Grupo no Telegram', href: links.telegram }].map((link, i) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-2 py-3 text-sm text-prata hover:bg-white/[0.04]"
+                className="flex min-h-[48px] items-center gap-4 border-b px-4 text-sm text-prata last:border-b-0"
               >
+                <span className="num text-[11px] text-aco/60">{String(i + 1).padStart(2, '0')}</span>
                 {link.label}
               </a>
             ))}
-          </nav>
-        )}
-      </div>
+          </div>
+        </nav>
+      )}
     </header>
   )
 }

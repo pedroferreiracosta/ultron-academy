@@ -1,66 +1,41 @@
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
-import Reveal from './ui/Reveal'
-import { faq } from '../content/site'
-
-function FaqItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
-  return (
-    <div className="glow-card rounded-xl bg-grafite">
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left min-h-[44px]"
-      >
-        <span className="font-medium text-prata">{q}</span>
-        <ChevronDown
-          size={20}
-          className={`shrink-0 text-aco transition-transform duration-300 ${isOpen ? 'rotate-180 text-ciano' : ''}`}
-          aria-hidden="true"
-        />
-      </button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
-            className="overflow-hidden"
-          >
-            <p className="px-5 pb-4 text-sm text-aco">{a}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  )
-}
+import Section from './ui/Section'
+import Todo from './ui/Todo'
+import { faq, links } from '../content/site'
 
 export default function Faq() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0)
+  const items = faq.filter((f) => f.a || import.meta.env.DEV)
 
   return (
-    <section id="faq" className="relative py-20 sm:py-28">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <Reveal className="text-center">
-          <span className="text-xs font-medium uppercase tracking-wider text-ciano">FAQ</span>
-          <h2 className="mt-3 text-2xl font-bold sm:text-3xl">Perguntas frequentes</h2>
-        </Reveal>
-
-        <div className="mt-10 space-y-3">
-          {faq.map((item, i) => (
-            <Reveal key={item.q} delay={i * 0.04}>
-              <FaqItem
-                q={item.q}
-                a={item.a}
-                isOpen={openIndex === i}
-                onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-              />
-            </Reveal>
-          ))}
-        </div>
+    <Section
+      id="faq"
+      index="06"
+      name="Perguntas"
+      title="O que perguntam antes de abrir a conta"
+      aside={
+        <p className="text-sm">
+          Não achou a sua?{' '}
+          <a href={links.telegram} target="_blank" rel="noopener noreferrer" className="text-ciano underline-offset-4 hover:underline">
+            Pergunte no grupo do Telegram
+          </a>
+          .
+        </p>
+      }
+    >
+      <div className="border-t">
+        {items.map((item, i) => (
+          <details key={item.q} className="group border-b" open={i === 0}>
+            <summary className="grid min-h-[56px] cursor-pointer grid-cols-[2.5rem_1fr_1.5rem] items-center gap-2 py-3 transition-colors duration-150 hover:text-branco">
+              <span className="num text-[12px] text-aco/70">{String(i + 1).padStart(2, '0')}</span>
+              <span className="font-medium text-prata group-open:text-branco">{item.q}</span>
+              <span className="num text-right text-aco group-open:text-ciano" aria-hidden="true">
+                <span className="group-open:hidden">+</span>
+                <span className="hidden group-open:inline">−</span>
+              </span>
+            </summary>
+            <div className="pb-5 pl-12 pr-6 text-[15px] text-aco">{item.a ?? <Todo>{item.todo}</Todo>}</div>
+          </details>
+        ))}
       </div>
-    </section>
+    </Section>
   )
 }
