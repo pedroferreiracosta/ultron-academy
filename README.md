@@ -38,7 +38,7 @@ Pendentes hoje:
 
 ## Links reais
 
-- Cadastro na corretora: `https://r.ryvon.io/l/1070/913`. É só um atalho para a página de cadastro: não é link de afiliado, não identifica o aluno e a Ultron não recebe nada por ele.
+- Cadastro na corretora: `https://r.ryvon.io/l/1095/1110`. É só um atalho para a página de cadastro: não é link de afiliado, não identifica o aluno e a Ultron não recebe nada por ele.
 - Grupo no Telegram: `https://t.me/+c1bmO-4z90M0MjMx`. Grupo **gratuito**, porta de entrada: qualquer pessoa entra sem pagar e sem conta em corretora. É o CTA principal do site.
 
 A Ultron **não tem vínculo** com a corretora: opera nela e ensina a operar

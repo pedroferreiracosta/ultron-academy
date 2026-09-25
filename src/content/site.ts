@@ -20,7 +20,7 @@ export const links = {
   // Link real extraído de https://ultronacademy.online/links/. É só um atalho
   // para a página de cadastro da corretora: não é link de afiliado, não
   // identifica o aluno e a Ultron não recebe nada por ele. Abrir conta é opcional.
-  broker: 'https://r.ryvon.io/l/1070/913',
+  broker: 'https://r.ryvon.io/l/1095/1110',
   tiktok: 'https://www.tiktok.com/@ultronacademy',
   terms: null as Maybe<string>, // TODO: URL dos termos de uso
   privacy: null as Maybe<string>, // TODO: URL da política de privacidade
