@@ -26,17 +26,13 @@ Preencher o valor faz o dado aparecer nos dois ambientes.
 Pendentes hoje:
 
 - [ ] `facts.brokerName`: nome da corretora
-- [ ] `facts.access`: custo das aulas e da Sala VIP (o grupo do Telegram já é gratuito)
 - [ ] `facts.minDeposit`: depósito mínimo
-- [ ] `facts.accessHow`: como o aluno ganha acesso às aulas
-- [ ] `facts.signals`: o grupo do Telegram passa sinais?
-- [ ] `vipRoom.link` e `vipRoom.conditions`: link e condições da Sala VIP
 - [ ] Print real da plataforma para o mockup do hero (`PlatformMockup.tsx`)
 - [ ] `facts.cnpj`
 - [ ] `links.terms` e `links.privacy`
-- [ ] `kpis`: aulas, horas, anos (só "16.000+ alunos" é dado confirmado; confirmar o rótulo "alunos cadastrados" x "membros da comunidade")
-- [ ] `tracks`: validar a ementa (5 trilhas confirmadas, material antigo citava 7)
-- [ ] `instructors`: confirmar o nome (Mateus Menezes x Felipe Luna; um print agradece a "Felipe e Vitor"), bio, ano de início, ativos que opera, papel na Ultron
+- [ ] `stats`: confirmar o rótulo do 16.000+ ("alunos cadastrados" x "membros da comunidade") e informar tempo de operação
+- [ ] `lives`: horário de cada uma das 3 lives diárias
+- [ ] `instructors`: confirmar o nome (Mateus Menezes x Felipe Luna; um print agradece a "Felipe e Vitor"), se os dois conduzem as lives, bio, ano de início, ativos que operam
 - [ ] `assets`: confirmar os mercados que aparecem nas aulas
 - [ ] OG image: criar `public/og-cover.png` (1200x630) e reativar a tag comentada nos dois HTML
 
@@ -46,7 +42,7 @@ Pendentes hoje:
 - Grupo no Telegram: `https://t.me/+c1bmO-4z90M0MjMx`. Grupo **gratuito**, porta de entrada: qualquer pessoa entra sem pagar e sem conta em corretora. É o CTA principal do site.
 
 A Ultron **não tem vínculo** com a corretora: opera nela e ensina a operar
-nela. Só existem esses dois destinos de CTA: o texto do botão varia por seção, mas nunca promete o que o link não entrega (ex.: "Entrar na Sala VIP" ou "Aprender com Mateus" levando à corretora). O botão da corretora diz sempre que é o cadastro na corretora, opcional. A copy não pode sugerir parceria, representação, nem que abrir conta pelo link seja condição para estudar com a Ultron. A corretora aparece sempre como "a que usamos nas aulas". O aviso legal e de
+nela. Só existem esses dois destinos de CTA: o texto do botão varia por seção, mas nunca promete o que o link não entrega (ex.: "Aprender com Mateus" levando à corretora). O botão da corretora diz sempre que é o cadastro na corretora, opcional. A copy não pode sugerir parceria, representação, nem que abrir conta pelo link seja condição para estudar com a Ultron. A corretora aparece sempre como "a que usamos nas lives". O aviso legal e de
 risco no rodapé (`disclaimer` em `site.ts`) é obrigatório e aparece nas duas
 páginas, sempre aberto.
 
@@ -76,8 +72,9 @@ Nada de texto, imagem, ícone ou código deles foi copiado.
   flag-icons MIT; ver `LICENSES.md` na pasta).
 - Mockup do hero (`PlatformMockup.tsx`) é uma recriação marcada como
   "Imagem ilustrativa". TODO: trocar pelo print real da plataforma.
-- Sala VIP: citada como parte da Ultron, sem botão, sem link e sem dizer se é
-  gratuita ou paga. Nunca aparece junto do que é gratuito (o grupo do Telegram).
+- Como a Ultron funciona: 3 lives por dia e sinais manuais, tudo no grupo
+  gratuito do Telegram. Não há aulas gravadas nem Sala VIP; o site não deve
+  citar nenhum dos dois como existentes.
 
 ## Prints de alunos
 

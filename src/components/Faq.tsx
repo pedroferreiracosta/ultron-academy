@@ -45,7 +45,7 @@ export default function Faq() {
                 >
                   <div className="overflow-hidden">
                     <p className="px-6 pb-6 text-[17px] leading-relaxed text-aco">
-                      {item.a ?? <Todo>{item.todo}</Todo>} {item.a && item.partialTodo && <Todo>{item.partialTodo}</Todo>}
+                      {item.a ?? <Todo>{item.todo}</Todo>}
                     </p>
                   </div>
                 </div>

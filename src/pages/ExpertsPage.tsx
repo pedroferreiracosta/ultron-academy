@@ -49,7 +49,7 @@ export default function ExpertsPage() {
                 <article key={e.name} data-reveal className="card grid overflow-hidden lg:grid-cols-[5fr_7fr]">
                   <img
                     src={e.photo}
-                    alt={`${e.name} dando aula com o gráfico projetado ao fundo`}
+                    alt={`${e.name} falando ao público com um gráfico projetado ao fundo`}
                     width={960}
                     height={e.height}
                     loading={i === 0 ? 'eager' : 'lazy'}

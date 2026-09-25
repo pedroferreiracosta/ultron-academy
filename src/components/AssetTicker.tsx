@@ -3,10 +3,10 @@ import { assets } from '../content/site'
 
 const track = [...assets, ...assets]
 
-// Ativos que aparecem nas aulas, rolando. Sem cotação.
+// Ativos que aparecem nas lives, rolando. Sem cotação.
 export default function AssetTicker() {
   return (
-    <section aria-label="Ativos que aparecem nas aulas" className="relative border-y border-borda bg-fundo">
+    <section aria-label="Ativos que aparecem nas lives" className="relative border-y border-borda bg-fundo">
       <div className="marquee-viewport edge-fade no-scrollbar overflow-hidden">
         <ul className="marquee-track flex w-max animate-marquee items-center gap-14 py-6 pr-14">
           {track.map((a, i) => (

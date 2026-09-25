@@ -1,6 +1,5 @@
 import { ArrowRight, Send } from 'lucide-react'
-import Todo from './ui/Todo'
-import { team, vipRoom } from '../content/site'
+import { team } from '../content/site'
 import mateus from '../assets/speakers/expert-mateus.webp'
 import adriana from '../assets/speakers/expert-adriana.webp'
 
@@ -24,7 +23,7 @@ export default function Team() {
           >
             <img
               src={mateus}
-              alt="Mateus Menezes dando aula com o gráfico projetado ao fundo"
+              alt="Mateus Menezes falando ao público com um gráfico projetado ao fundo"
               width={960}
               height={1199}
               loading="lazy"
@@ -45,28 +44,30 @@ export default function Team() {
             <article
               data-reveal
               style={{ ['--reveal-delay' as string]: '100ms' }}
-              className="grid flex-1 overflow-hidden rounded-2xl border border-preto/15 bg-branco sm:grid-cols-2"
+              className="grid overflow-hidden rounded-2xl border border-preto/15 bg-branco sm:grid-cols-2 lg:flex-1"
             >
-              <img
-                src={adriana}
-                alt="Adriana Costa dando aula ao vivo"
-                width={960}
-                height={1200}
-                loading="lazy"
-                decoding="async"
-                className="aspect-[4/3] h-full w-full object-cover object-[50%_25%] sm:aspect-auto"
-              />
+              {/* A foto fica num wrapper com posição absoluta para nunca invadir o texto no mobile */}
+              <div className="relative aspect-[4/3] sm:aspect-auto sm:min-h-[260px]">
+                <img
+                  src={adriana}
+                  alt="Adriana Costa falando ao público com um gráfico projetado ao fundo"
+                  width={960}
+                  height={1200}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover object-[50%_25%]"
+                />
+              </div>
               <div className="p-7 sm:p-8">
-                <h3 className="text-[clamp(1.5rem,2.2vw,2rem)] font-semibold">{team.vipTitle}</h3>
-                <p className="mt-3 text-[17px] leading-relaxed text-preto/70">{team.vipBody}</p>
-                {!vipRoom.link && <Todo className="mt-4">link e condições da Sala VIP</Todo>}
+                <h3 className="text-[clamp(1.5rem,2.2vw,2rem)] font-semibold">{team.livesTitle}</h3>
+                <p className="mt-3 text-[17px] leading-relaxed text-preto/70">{team.livesBody}</p>
               </div>
             </article>
 
             <article
               data-reveal
               style={{ ['--reveal-delay' as string]: '180ms' }}
-              className="grid flex-1 overflow-hidden rounded-2xl border border-preto/15 bg-branco sm:grid-cols-2"
+              className="grid overflow-hidden rounded-2xl border border-preto/15 bg-branco sm:grid-cols-2 lg:flex-1"
             >
               <div
                 className="flex min-h-[200px] items-center justify-center"

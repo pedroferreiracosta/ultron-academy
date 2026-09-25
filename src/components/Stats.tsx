@@ -16,7 +16,7 @@ export default function Stats() {
         </h2>
 
         <div
-          className={`mx-auto mt-14 grid gap-y-10 ${items.length > 1 ? 'grid-cols-2 lg:grid-cols-4' : 'max-w-md grid-cols-1'}`}
+          className={`mx-auto mt-14 grid gap-y-10 ${items.length === 1 ? 'max-w-md grid-cols-1' : items.length === 2 ? 'max-w-3xl grid-cols-2' : 'grid-cols-2 lg:grid-cols-3'}`}
           data-reveal
         >
           {items.map((s, i) => (

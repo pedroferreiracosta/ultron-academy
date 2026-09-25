@@ -1,5 +1,7 @@
+import { Radio } from 'lucide-react'
 import CandleChart from './ui/CandleChart'
-import { advantages, tracks } from '../content/site'
+import Todo from './ui/Todo'
+import { advantages, lives } from '../content/site'
 
 export default function Advantages() {
   return (
@@ -9,23 +11,24 @@ export default function Advantages() {
           <span className="badge">{advantages.badge}</span>
           <h2 className="h-section mt-6 max-w-[560px]">{advantages.title}</h2>
 
-          {/* Card grande: a trilha, na ordem em que é ensinada */}
+          {/* Card grande: as 3 lives do dia */}
           <div
             className="relative mt-10 overflow-hidden rounded-3xl border border-borda p-7 sm:p-10"
             style={{ background: 'radial-gradient(90% 70% at 100% 0%, rgba(30,107,255,0.28), transparent 60%), #111722' }}
           >
-            <p className="font-heading text-2xl font-semibold sm:text-[28px]">{advantages.trackTitle}</p>
-            <p className="mt-3 max-w-md text-aco">{advantages.trackBody}</p>
+            <p className="font-heading text-2xl font-semibold sm:text-[28px]">{advantages.livesTitle}</p>
+            <p className="mt-3 max-w-md text-aco">{advantages.livesBody}</p>
             <ol className="mt-8 space-y-3">
-              {tracks.map((t, i) => (
+              {lives.map((l) => (
                 <li
-                  key={t}
-                  className="flex items-center gap-4 rounded-xl border border-borda bg-preto/50 px-4 py-3.5 transition-colors hover:border-ciano/50"
+                  key={l.name}
+                  className="flex items-center gap-4 rounded-xl border border-borda bg-preto/50 px-4 py-4 transition-colors hover:border-ciano/50"
                 >
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-azul/15 font-heading text-sm font-semibold text-ciano">
-                    {String(i + 1).padStart(2, '0')}
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-azul/15 text-ciano">
+                    <Radio size={20} aria-hidden="true" />
                   </span>
-                  <span className="font-medium">{t}</span>
+                  <span className="font-medium">{l.name}</span>
+                  <span className="ml-auto text-aco">{l.time ?? <Todo>horário</Todo>}</span>
                 </li>
               ))}
             </ol>

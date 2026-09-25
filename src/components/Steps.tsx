@@ -1,7 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import Button from './ui/Button'
-import Todo from './ui/Todo'
-import { cta, facts, links, steps } from '../content/site'
+import { cta, links, steps } from '../content/site'
 
 export default function Steps() {
   return (
@@ -21,8 +20,6 @@ export default function Steps() {
             </li>
           ))}
         </ol>
-
-        {!facts.accessHow && <Todo className="mt-10">{steps.accessTodo}</Todo>}
 
         <div className="mt-14" data-reveal>
           <Button href={links.telegram} target="_blank" rel="noopener noreferrer">

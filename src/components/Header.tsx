@@ -49,7 +49,7 @@ export default function Header({ page = 'home' }: { page?: 'home' | 'experts' })
               rel="noopener noreferrer"
               variant="outline"
               size="sm"
-              title="Cadastro na corretora que usamos nas aulas. Opcional."
+              title="Cadastro na corretora que usamos nas lives. Opcional."
               className="hidden md:inline-flex"
             >
               {cta.brokerShort}

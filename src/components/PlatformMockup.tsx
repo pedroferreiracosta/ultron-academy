@@ -3,7 +3,7 @@ import AssetIcon from './ui/AssetIcon'
 import { hero } from '../content/site'
 import logoIcon from '../assets/logo-ultron-icon.png'
 
-// TODO: trocar por um print real da plataforma em que as aulas são gravadas.
+// TODO: trocar por um print real da plataforma usada nas lives.
 // Até lá, é uma recriação com a marca Ultron, marcada como imagem ilustrativa.
 const tabs = [
   { label: 'BTC/USD', icons: ['btc'] },
