@@ -57,8 +57,10 @@ o site não deve citar nenhum deles como existente.
 - Ativos (ticker e mockup) são exemplos de análise, sem cotação e sem
   apresentar como oportunidade. O mockup não tem botões de compra e venda.
 - Nada de prints de resultado, extratos ou prova de ganho.
-- O aviso "Aviso importante - conteúdo educacional" (`riskNotice`) fica
-  logo acima do CTA principal, no Hero e no CTA final.
+- O aviso "Aviso importante - conteúdo educacional" (`riskNotice`) aparece
+  aberto no rodapé e num popup fixo no canto inferior esquerdo das duas
+  páginas (`RiskPopup`). O popup pode ser minimizado, mas vira uma pílula
+  que reabre; nunca some.
 - O aviso legal e de risco (`disclaimer`) e o bloco institucional (razão
   social e CNPJ) ficam no rodapé das duas páginas, sempre abertos.
 - Nenhum número, depoimento, nome ou dado de curso inventado.
@@ -73,9 +75,9 @@ Nada de texto, imagem, ícone ou código deles foi copiado.
 
 - Ciano/azul da marca no lugar do laranja da referência. Montserrat 600 nos
   títulos, Inter no texto, número do contador em JetBrains Mono.
-- Ordem da home: Header → Hero (aviso + mockup ilustrativo) → Ticker →
+- Ordem da home: Header → Hero (mockup ilustrativo) → Ticker →
   Conteúdo → Formação → Comece em 3 passos → Feita por quem ensina (bloco claro, id `experts`) →
-  Números (bloco claro) → Transparência → CTA final (com aviso) →
+  Números (bloco claro) → Transparência → CTA final →
   FAQ → Rodapé.
 - Animações sem biblioteca: entrada ao rolar com IntersectionObserver
   (`src/lib/useReveal.ts` + `data-reveal`), marquees e acordeão em CSS,

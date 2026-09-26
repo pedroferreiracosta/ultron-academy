@@ -1,6 +1,7 @@
 import type { SVGProps } from 'react'
 import { Send } from 'lucide-react'
 import Todo from './ui/Todo'
+import RiskNotice, { RiskPopup } from './ui/RiskNotice'
 import { disclaimer, facts, footer, links, nav } from '../content/site'
 import logo from '../assets/ultron-logo-160.webp'
 
@@ -52,6 +53,7 @@ export default function Footer({ page = 'home' }: { page?: 'home' | 'experts' })
 
   return (
     <footer className="relative overflow-hidden bg-fundo pt-24">
+      <RiskPopup />
       <div className="container-x">
         <div className="grid gap-14 lg:grid-cols-[1.1fr_1.6fr]">
           <div>
@@ -110,6 +112,8 @@ export default function Footer({ page = 'home' }: { page?: 'home' | 'experts' })
             {facts.companyName ? <span>{facts.companyName}</span> : <Todo>razão social</Todo>}
             {facts.cnpj ? <span>CNPJ: {facts.cnpj}</span> : <Todo>CNPJ</Todo>}
           </p>
+
+          <RiskNotice className="mt-8 max-w-5xl" />
 
           <p className="mt-8 font-heading text-sm font-semibold uppercase tracking-wider text-prata">Aviso legal e de risco</p>
           <p className="mt-4 max-w-5xl text-sm leading-relaxed text-prata/85">{disclaimer}</p>

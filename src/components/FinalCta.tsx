@@ -1,6 +1,5 @@
 import { ArrowRight, Check } from 'lucide-react'
 import Button from './ui/Button'
-import RiskNotice from './ui/RiskNotice'
 import { cta, finalCta, links } from '../content/site'
 
 export default function FinalCta() {
@@ -15,9 +14,7 @@ export default function FinalCta() {
         </h2>
         <p className="lead mx-auto mt-6 max-w-2xl text-branco/80">{finalCta.body}</p>
 
-        <RiskNotice className="mt-10" />
-
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button href={links.telegram} target="_blank" rel="noopener noreferrer" className="w-full max-w-[400px] sm:w-auto">
             {cta.telegram}
             <ArrowRight size={20} aria-hidden="true" />
