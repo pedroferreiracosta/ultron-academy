@@ -41,7 +41,7 @@ export default function ExpertsPage() {
             {experts.map((e, i) => {
               const rows = [
                 { k: 'No mercado desde', v: e.since, todo: 'ano' },
-                { k: 'Ativos que opera', v: e.markets, todo: 'ativos' },
+                { k: 'Formação', v: e.credentials, todo: 'formação e experiência em ensino' },
                 { k: 'Na Ultron', v: e.atUltron, todo: 'papel na Ultron' },
               ].filter((r) => r.v || import.meta.env.DEV)
 

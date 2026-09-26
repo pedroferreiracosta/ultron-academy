@@ -6,7 +6,7 @@ const cardIcons = [Landmark, Unlink, GraduationCap]
 
 export default function Money() {
   return (
-    <section id="seu-dinheiro" className="bg-fundo py-24 sm:py-32">
+    <section id="transparencia" className="bg-fundo py-24 sm:py-32">
       <div className="container-x">
         <div className="mx-auto max-w-3xl text-center" data-reveal>
           <span className="badge">{money.badge}</span>

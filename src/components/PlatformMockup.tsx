@@ -49,8 +49,13 @@ export default function PlatformMockup() {
             <span className="h-3 w-24 rounded bg-branco/10" />
             <span className="h-9 rounded-lg bg-branco/5" />
             <span className="h-9 rounded-lg bg-branco/5" />
-            <span className="mt-2 h-11 rounded-lg bg-verde/80" />
-            <span className="h-11 rounded-lg bg-vermelho/80" />
+            {/* Painel de ferramentas de análise, sem botões de compra e venda */}
+            {['Tendência', 'Suporte', 'Resistência'].map((t) => (
+              <span key={t} className="flex h-9 items-center gap-2 rounded-lg border border-borda px-3 text-[11px] text-aco">
+                <span className="h-0.5 w-4 rounded bg-ciano/70" />
+                {t}
+              </span>
+            ))}
           </div>
         </div>
       </div>

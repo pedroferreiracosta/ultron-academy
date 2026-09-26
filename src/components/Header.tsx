@@ -43,17 +43,6 @@ export default function Header({ page = 'home' }: { page?: 'home' | 'experts' })
           </nav>
 
           <div className="flex items-center gap-2.5">
-            <Button
-              href={links.broker}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              size="sm"
-              title="Cadastro na corretora que usamos nas lives. Opcional."
-              className="hidden md:inline-flex"
-            >
-              {cta.brokerShort}
-            </Button>
             <Button href={links.telegram} target="_blank" rel="noopener noreferrer" size="sm">
               {cta.telegramShort}
             </Button>
@@ -82,8 +71,8 @@ export default function Header({ page = 'home' }: { page?: 'home' | 'experts' })
                 {l.label}
               </a>
             ))}
-            <Button href={links.broker} target="_blank" rel="noopener noreferrer" variant="outline" className="mt-2">
-              {cta.broker}
+            <Button href={links.telegram} target="_blank" rel="noopener noreferrer" className="mt-2">
+              {cta.telegram}
             </Button>
           </nav>
         )}

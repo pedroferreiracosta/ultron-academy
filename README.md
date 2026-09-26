@@ -26,28 +26,42 @@ Preencher o valor faz o dado aparecer nos dois ambientes.
 Pendentes hoje:
 
 - [ ] `facts.brokerName`: nome da corretora
-- [ ] `facts.minDeposit`: depósito mínimo
+- [ ] `facts.companyName`: razão social (Legacy Company?)
+- [ ] `facts.liveDuration`: duração de cada live
 - [ ] Print real da plataforma para o mockup do hero (`PlatformMockup.tsx`)
 - [ ] `facts.cnpj`
-- [ ] `links.terms` e `links.privacy`
+- [ ] `links.terms`, `links.privacy` e `links.refund` (Termos de Uso, Política de Privacidade e Política de Reembolso)
+- [ ] `course.topics`: confirmar os temas ensinados nas lives
 - [ ] `stats`: confirmar o rótulo do 16.000+ ("alunos cadastrados" x "membros da comunidade") e informar tempo de operação
 - [ ] `lives`: horário de cada uma das 3 lives diárias
-- [ ] `instructors`: confirmar o nome (Mateus Menezes x Felipe Luna; um print agradece a "Felipe e Vitor"), se os dois conduzem as lives, bio, ano de início, ativos que operam
-- [ ] `assets`: confirmar os mercados que aparecem nas aulas
+- [ ] `instructors`: confirmar o nome (Mateus Menezes x Felipe Luna; um print agradece a "Felipe e Vitor"), se os dois conduzem as lives, bio, ano de início, formação e experiência em ensino (`credentials`)
+- [ ] `assets`: confirmar os mercados usados como exemplo nas lives
 - [ ] OG image: criar `public/og-cover.png` (1200x630) e reativar a tag comentada nos dois HTML
 
 ## Links reais
 
-- Cadastro na corretora: `https://r.ryvon.io/l/1095/1110`. É só um atalho para a página de cadastro: não é link de afiliado, não identifica o aluno e a Ultron não recebe nada por ele.
-- Grupo no Telegram: `https://t.me/+c1bmO-4z90M0MjMx`. Grupo **gratuito**, porta de entrada: qualquer pessoa entra sem pagar e sem conta em corretora. É o CTA principal do site.
+- Lives gratuitas no Telegram: `https://t.me/+c1bmO-4z90M0MjMx`. É o único CTA do site ("Assistir às lives gratuitas").
+- Cadastro na corretora: `https://r.ryvon.io/l/1095/1110`. É só um atalho para a página de cadastro: não é link de afiliado, não identifica o aluno e a Ultron não recebe nada por ele. Aparece só no rodapé e é citado no FAQ; nunca como botão de destaque.
 
-A Ultron **não tem vínculo** com a corretora: opera nela e ensina a operar
-nela. Só existem esses dois destinos de CTA: o texto do botão varia por seção, mas nunca promete o que o link não entrega (ex.: "Aprender com Mateus" levando à corretora). O botão da corretora diz sempre que é o cadastro na corretora, opcional. A copy não pode sugerir parceria, representação, nem que abrir conta pelo link seja condição para estudar com a Ultron. A corretora aparece sempre como "a que usamos nas lives". O aviso legal e de
-risco no rodapé (`disclaimer` em `site.ts`) é obrigatório e aparece nas duas
-páginas, sempre aberto.
+## Regras de copy (política de anúncios do TikTok)
 
-Nada de promessa de ganho, "risco zero", "dobre a banca", contador ou vaga
-fictícia. Nenhum número, depoimento ou nome inventado.
+O site é 100% educacional: formação em análise técnica dada em 3 lives
+gratuitas por dia. Não há sinais, aulas gravadas, Sala VIP nem curso pago, e
+o site não deve citar nenhum deles como existente.
+
+- Proibido: ganhar dinheiro, lucro, liberdade financeira, "quer operar",
+  "operar junto", sinal (de entrada), compre/venda agora, "método que
+  funciona", rentabilidade, promessa de resultado, contador ou vaga fictícia.
+- Usar: aprenda análise técnica, formação, leitura de gráficos, análise de
+  mercado, gestão de risco, desenvolva suas habilidades.
+- Ativos (ticker e mockup) são exemplos de análise, sem cotação e sem
+  apresentar como oportunidade. O mockup não tem botões de compra e venda.
+- Nada de prints de resultado, extratos ou prova de ganho.
+- O aviso "Aviso importante - conteúdo educacional" (`riskNotice`) fica
+  logo acima do CTA principal, no Hero e no CTA final.
+- O aviso legal e de risco (`disclaimer`) e o bloco institucional (razão
+  social e CNPJ) ficam no rodapé das duas páginas, sempre abertos.
+- Nenhum número, depoimento, nome ou dado de curso inventado.
 
 ## Direção visual
 
@@ -59,10 +73,10 @@ Nada de texto, imagem, ícone ou código deles foi copiado.
 
 - Ciano/azul da marca no lugar do laranja da referência. Montserrat 600 nos
   títulos, Inter no texto, número do contador em JetBrains Mono.
-- Ordem da home: Header → Hero (mockup ilustrativo) → Ticker → Vantagens →
-  Comece em 3 passos → Feita por quem opera (bloco claro, id `experts`) →
-  Números (bloco claro) → Onde fica o seu dinheiro → Feedbacks (prints) →
-  CTA final → FAQ → Rodapé.
+- Ordem da home: Header → Hero (aviso + mockup ilustrativo) → Ticker →
+  Conteúdo → Formação → Comece em 3 passos → Feita por quem ensina (bloco claro, id `experts`) →
+  Números (bloco claro) → Transparência → CTA final (com aviso) →
+  FAQ → Rodapé.
 - Animações sem biblioteca: entrada ao rolar com IntersectionObserver
   (`src/lib/useReveal.ts` + `data-reveal`), marquees e acordeão em CSS,
   contador em `src/components/ui/Counter.tsx`. Com `prefers-reduced-motion`
@@ -72,16 +86,6 @@ Nada de texto, imagem, ícone ou código deles foi copiado.
   flag-icons MIT; ver `LICENSES.md` na pasta).
 - Mockup do hero (`PlatformMockup.tsx`) é uma recriação marcada como
   "Imagem ilustrativa". TODO: trocar pelo print real da plataforma.
-- Como a Ultron funciona: 3 lives por dia e sinais manuais, tudo no grupo
-  gratuito do Telegram. Não há aulas gravadas nem Sala VIP; o site não deve
-  citar nenhum dos dois como existentes.
-
-## Prints de alunos
-
-`src/assets/results/result-1..6.webp` são prints reais enviados por alunos,
-**recortados** para tirar nome e foto de perfil do cabeçalho do chat (e o
-teclado). No print 5 a placa do carro foi borrada. Exibidos em grade estática
-com o aviso "Resultados individuais. Não representam garantia de ganho.".
 
 ## Deploy
 

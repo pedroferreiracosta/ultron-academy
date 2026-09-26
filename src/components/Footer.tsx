@@ -30,16 +30,17 @@ export default function Footer({ page = 'home' }: { page?: 'home' | 'experts' })
     {
       title: 'Comunidade',
       items: [
-        { label: 'Grupo gratuito no Telegram', href: links.telegram, external: true },
+        { label: 'Lives gratuitas no Telegram', href: links.telegram, external: true },
         { label: 'TikTok', href: links.tiktok, external: true },
-        { label: 'Corretora que usamos (opcional)', href: links.broker, external: true },
+        { label: 'Corretora usada nas lives (opcional)', href: links.broker, external: true },
       ],
     },
     {
       title: 'Políticas',
       items: [
         { label: 'Termos de uso', href: links.terms, todo: 'URL dos termos' },
-        { label: 'Privacidade', href: links.privacy, todo: 'URL da privacidade' },
+        { label: 'Política de privacidade', href: links.privacy, todo: 'URL da privacidade' },
+        { label: 'Política de reembolso', href: links.refund, todo: 'URL do reembolso' },
       ],
     },
   ]
@@ -103,12 +104,15 @@ export default function Footer({ page = 'home' }: { page?: 'home' | 'experts' })
         </div>
 
         <div className="mt-16 border-t border-borda pt-10">
-          <p className="font-heading text-sm font-semibold uppercase tracking-wider text-prata">Aviso legal e de risco</p>
-          <p className="mt-4 max-w-5xl text-sm leading-relaxed text-prata/85">
-            {disclaimer}
-            {facts.cnpj ? ` CNPJ: ${facts.cnpj}.` : ' '}
-            {!facts.cnpj && <Todo>CNPJ</Todo>}
+          {/* Informações institucionais */}
+          <p className="font-heading text-sm font-semibold uppercase tracking-wider text-branco">{footer.institutionalTitle}</p>
+          <p className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-prata/85">
+            {facts.companyName ? <span>{facts.companyName}</span> : <Todo>razão social</Todo>}
+            {facts.cnpj ? <span>CNPJ: {facts.cnpj}</span> : <Todo>CNPJ</Todo>}
           </p>
+
+          <p className="mt-8 font-heading text-sm font-semibold uppercase tracking-wider text-prata">Aviso legal e de risco</p>
+          <p className="mt-4 max-w-5xl text-sm leading-relaxed text-prata/85">{disclaimer}</p>
           <p className="mt-8 text-sm text-branco">&copy; {new Date().getFullYear()} Ultron Academy. Todos os direitos reservados.</p>
         </div>
       </div>

@@ -1,5 +1,6 @@
-import { ArrowRight, ArrowUpRight, Zap } from 'lucide-react'
+import { ArrowRight, Zap } from 'lucide-react'
 import Button from './ui/Button'
+import RiskNotice from './ui/RiskNotice'
 import PlatformMockup from './PlatformMockup'
 import { cta, hero, links } from '../content/site'
 
@@ -28,14 +29,12 @@ export default function Hero() {
 
         <p className="lead mx-auto mt-6 max-w-[640px] text-aco">{hero.body}</p>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <RiskNotice className="mt-10" />
+
+        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button href={links.telegram} target="_blank" rel="noopener noreferrer" className="w-full max-w-[400px] sm:w-auto">
             {cta.telegram}
             <ArrowRight size={20} aria-hidden="true" />
-          </Button>
-          <Button href={links.broker} target="_blank" rel="noopener noreferrer" variant="outline" className="w-full max-w-[400px] whitespace-normal sm:w-auto">
-            {cta.broker}
-            <ArrowUpRight size={20} aria-hidden="true" />
           </Button>
         </div>
 
